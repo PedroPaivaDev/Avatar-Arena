@@ -1,6 +1,11 @@
-// MOSTRAR OS VALORES MODIFICADOS, ASSIM QUE MARCADA A OPÇÃO DE EFEITO
-// Se clicar em jogar sem escolher o atributo, ele está mostrando se o oponente vai usar efeito ou nao
-// Colocar botões a esquerda da tela e deixar apenas as cartas uma ao lado da outra na direita
+// Adicionar efeito sonoro pra cada elemento
+// Cada carta mexe quando faz o som
+// Estilizar o botão de ação
+// fazer animação das cartas saindo do botão
+// Adicionar 10 pontos de vida para cada carta
+// Adicionar mais cartas
+// Jogador pode selecionar as cartas que deseja
+
 let carta1 = {
   nome: "Aang",
   imagem: "https://data.whicdn.com/images/115410440/original.gif",
@@ -91,13 +96,15 @@ function sortearCarta() {
 
   document.getElementById("btnSortear").disabled = true;
   document.getElementById("btnJogar").disabled = false;
+  document.getElementById("btnSortear").style.visibility = "hidden"
+  document.getElementById("btnJogar").style.visibility = "visible"
 
   exibirCartaJogador();
   exibirCartaMaquina();
 }
 
 function obtemAtributoJogador() {
-  var radioAtributos = document.getElementsByName("atributo");
+  var radioAtributos = document.getElementsByName("atributoJog");
 
   for (var i = 0; i < radioAtributos.length; i++) {
     if (radioAtributos[i].checked == true) {
@@ -107,11 +114,27 @@ function obtemAtributoJogador() {
 }
 
 function obtemAtributoMaquina() {
+  var radioAtributos = document.getElementsByName("atributoMaq");
+  let labelAtriMaq = document.getElementsByName("labelAtriMaq");
+  
+  labelAtriMaq[0].classList.add("sombreado");
+  labelAtriMaq[1].classList.add("sombreado");
+  
+  var maqAtaque = document.getElementById("MaqAtaque");
+  var maqDefesa = document.getElementById("MaqDefesa");
+  
   var sorteio = parseInt(Math.random() * 2);
+  
   if (sorteio == 1) {
-    return "Ataque";
+    maqAtaque.checked = true;
   } else {
-    return "Defesa";
+    maqDefesa.checked = true;
+  }
+  
+  for (var i = 0; i < radioAtributos.length; i++) {
+    if (radioAtributos[i].checked == true) {
+      return radioAtributos[i].value;
+    }
   }
 }
 
@@ -143,8 +166,12 @@ function modificadorJogador() {
 function modificadorMaquina() {
   var sorteio = parseInt(Math.random() * 2);
   var elementoCheck = document.getElementById("habilMaquina");
-
+  
   if (sorteio == 1) {
+    elementoCheck.checked=true
+  }
+
+  if (elementoCheck.checked==true) {
     for (var player in cartaMaquina.modificadores) {
       document.getElementById("resulModifc").innerHTML =
         "o oponente usou o efeito especial";
@@ -172,6 +199,18 @@ function modificadorMaquina() {
   }
 }
 
+function conferir() {
+  var radioAtributos = document.getElementsByName("atributoJog");
+  var elementoResultado = document.getElementById("aviso");
+
+  if ( (radioAtributos[0].checked == false) && (radioAtributos[1].checked == false) ) {
+      elementoResultado.innerHTML = "Você deve escolher um atributo";
+  } else {
+    elementoResultado.innerHTML = ""
+    jogar()
+  }
+}
+
 function jogar() {
   var atributoJogador = obtemAtributoJogador();
   var atributoMaquina = obtemAtributoMaquina();
@@ -180,105 +219,135 @@ function jogar() {
   modificadorMaquina();
 
   var elementoResultado = document.getElementById("resultado");
+  elementoResultado.innerHTML = ""
 
   var valorCartaJogador = cartaJogador.atributos[atributoJogador];
   var valorCartaMaquina = cartaMaquina.atributos[atributoMaquina];
 
-  if (atributoJogador === undefined) {
-    elementoResultado.innerHTML = "Você deve escolher um atributo";
-    return;
-  } else if (valorCartaJogador > valorCartaMaquina) {
+  if (valorCartaJogador > valorCartaMaquina) {
     elementoResultado.innerHTML =
       "Você venceu!!! O oponente estava em modo de " +
       atributoMaquina +
       " (" +
-      cartaMaquina.atributos[atributoMaquina] +
+      cartaMaquina.atributos[atributoMaquina].toFixed(2) +
       " pontos)" +
       " e você estava em modo de " +
       atributoJogador +
       " (" +
-      cartaJogador.atributos[atributoJogador] +
+      cartaJogador.atributos[atributoJogador].toFixed(2) +
       " pontos).";
   } else if (valorCartaMaquina > valorCartaJogador) {
     elementoResultado.innerHTML =
       "Você perdeu! O oponente estava em modo de " +
       atributoMaquina +
       " (" +
-      cartaMaquina.atributos[atributoMaquina] +
+      cartaMaquina.atributos[atributoMaquina].toFixed(2) +
       " pontos)" +
       " e você estava em modo de " +
       atributoJogador +
       " (" +
-      cartaJogador.atributos[atributoJogador] +
+      cartaJogador.atributos[atributoJogador].toFixed(2) +
       " pontos).";
   } else {
     elementoResultado.innerHTML =
       "Empatou, o oponente estava em modo de " +
       atributoMaquina +
       " (" +
-      cartaMaquina.atributos[atributoMaquina] +
+      cartaMaquina.atributos[atributoMaquina].toFixed(2) +
       " pontos)" +
       " e você estava em modo de " +
       atributoJogador +
       " (" +
-      cartaJogador.atributos[atributoJogador] +
+      cartaJogador.atributos[atributoJogador].toFixed(2) +
       " pontos).";
   }
 
   document.getElementById("btnJogar").disabled = true;
   document.getElementById("btnreiniciar").disabled = false;
+  document.getElementById("btnJogar").style.visibility = "hidden"
+  document.getElementById("btnreiniciar").style.visibility = "visible"
+  
+  document.getElementById("scrollClosed").classList.add("scrollClosed")
+  document.getElementById("scrollOpen").classList.add("scrollOpen")
+  
+  setTimeout(() => {
+    document.getElementById("scrollResult").style.visibility = "visible"
+  }, 2000)
 }
 
 function exibirCartaJogador() {
   var divCartaJogador = document.getElementById("carta-jogador");
-  divCartaJogador.style.backgroundImage = `url(${cartaJogador.imagem})`;
-  var moldura =
-    '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">';
-  var tagHTML = "<div id='opcoes' class='carta-status'>";
-
+  
+  divCartaJogador.innerHTML = `
+  <div id="carta-jogador" style="display:on;">
+        <div class="imagemFundo">
+          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview.png">
+        </div>
+        <div class="nomeCarta">
+          <p id="carta-subtitle">${cartaJogador.nome}</p>
+        </div>
+        <div class="imagemCarta">
+          <img id="imagemCarta" src="${cartaJogador.imagem}">
+        </div>
+        <div id='opcoesJogador' class='carta-status'>
+          
+        </div>
+        <div class="habilidade">
+          <input type="checkbox" id="habilJogador">
+          <div id="carta-efeito" class="hooverLabel">
+            <label for="habilJogador">${cartaJogador.habilidade}</label>
+          </div>
+        </div>
+      </div>
+  `;
+  // https://codepen.io/matheus-forstner/pen/mdLWYge?editors=0011
+  var opcoes = document.getElementById("opcoesJogador");
+  
   var opcoesTexto = "";
   var atributosCarta = cartaJogador.atributos;
   for (var atributo in atributosCarta) {
-    opcoesTexto +=
-      "<input type='radio' name='atributo' value='" +
-      atributo +
-      "'>" +
-      atributo +
-      " " +
-      cartaJogador.atributos[atributo] +
-      "<br>";
+    opcoesTexto += `<input type="radio" id="Jog${atributo}" name="atributoJog" value="${atributo}">
+                    <label class="sombreado hooverLabel" for="Jog${atributo}" id="cartaStatusJog"> ${atributo} ${cartaJogador.atributos[atributo]} </label><p></p>`;
   }
-  var nome = `<p class="carta-subtitle">${cartaJogador.nome}</p>`;
-  var efeito = `<input type="checkbox" id="habilJogador" class="carta-efeito">${cartaJogador.habilidade}</p>`;
-
-  divCartaJogador.innerHTML =
-    moldura + nome + tagHTML + opcoesTexto + efeito + "</div>";
+  
+  opcoes.innerHTML = opcoesTexto;
 }
 
 function exibirCartaMaquina() {
   var divCartaMaquina = document.getElementById("carta-maquina");
-  divCartaMaquina.style.backgroundImage = `url(${cartaMaquina.imagem})`;
-  var moldura =
-    '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">';
-  var tagHTML = "<div id='opcoes' class='carta-status'>";
+  
+  divCartaMaquina.innerHTML = `
+  <div class="imagemFundo">
+          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview.png">
+        </div>
+        <div class="nomeCarta">
+          <p id="carta-subtitle">${cartaMaquina.nome}</p>
+        </div>
+        <div class="imagemCarta">
+          <img id="imagemCarta" src="${cartaMaquina.imagem}">
+        </div>
+        <div id='opcoesMaquina' class='carta-status'>
+          
+        </div>
+        <div class="habilidade">
+          <input type="checkbox" id="habilMaquina">
+          <div id="carta-efeito" class="sombreado">
+            <label>${cartaMaquina.habilidade}</label>
+          </div>
+        </div>          
+      </div>
+  `;
+  
+  var opcoes = document.getElementById("opcoesMaquina");
 
   var opcoesTexto = "";
   var atributosCarta = cartaMaquina.atributos;
   for (var atributo in atributosCarta) {
-    opcoesTexto +=
-      "<p name='atributo' value='" +
-      atributo +
-      "'>" +
-      atributo +
-      " " +
-      cartaMaquina.atributos[atributo] +
-      "</p>";
+    opcoesTexto +=`<input type="radio" id="Maq${atributo}" name="atributoMaq" value="${atributo}">
+                   <label for="Maq${atributo}" name="labelAtriMaq" id="cartaStatusMaq"> ${atributo} ${cartaMaquina.atributos[atributo]} </label><p></p>`;
   }
-  var nome = `<p class="carta-subtitle">${cartaMaquina.nome}</p>`;
-  var efeito = `<p id="habilMaquina" class="carta-efeito">${cartaMaquina.habilidade}</p>`;
-
-  divCartaMaquina.innerHTML =
-    moldura + nome + tagHTML + opcoesTexto + efeito + "</div>";
+  
+  opcoes.innerHTML = opcoesTexto;
 }
 
 function reiniciar() {
@@ -287,7 +356,8 @@ function reiniciar() {
 
   document.getElementById("resulModifc").innerHTML = "";
   document.getElementById("resultado").innerHTML = "";
-  document.getElementById("opcoes").innerHTML = "";
+  document.getElementById("opcoesMaquina").innerHTML = "";
+  document.getElementById("opcoesJogador").innerHTML = "";
 
   document.getElementById("carta-jogador").innerHTML = "";
   document.getElementById("carta-maquina").innerHTML = "";
@@ -306,6 +376,13 @@ function reiniciar() {
   carta3.atributos = { Ataque: 4, Defesa: 5 };
   carta4.atributos = { Ataque: 5, Defesa: 5 };
   carta5.atributos = { Ataque: 6, Defesa: 3 };
+  
+  document.getElementById("scrollClosed").classList.remove("scrollClosed");
+  document.getElementById("scrollOpen").classList.remove("scrollOpen");
+  document.getElementById("scrollResult").style.visibility = "hidden";
+  
+  document.getElementById("btnreiniciar").style.visibility = "hidden"
+  document.getElementById("btnSortear").style.visibility = "visible"
 }
 
 //console.log(Object.keys(carta1.modificadores))

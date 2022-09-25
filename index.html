@@ -18,30 +18,34 @@
   
 <body>
   <audio src="https://youtu.be/P4YIg1DupB8" autoplay=true>O seu navegador não suporta o elemento.</audio>
-  <h1 class="page-title">Avatar-Arena</h1>
   <div class="container">
-      <div>
-        <button class="sortear" onclick="sortearCarta()" id="btnSortear">Sortear Personagem</button>
-        <h2 class="resultado-final">Escolha a sua ação e se você utilizará o efeito especial</h2>
-        <button class="button-jogar" type="button" id="btnJogar" onclick="jogar()" disabled="false">Realizar movimento</button>
+    <div id="page-title">
+      <h1 class="page-title">AVATAR-ARENA</h1>
+    </div>
+    <div id="carta-jogador" style="display:on;"></div>
+  
+    <div class="mensagens">
+      <img id="scrollClosed" src="https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/parchment-cartoon-scroll-empty-old-paper-scroll-blank-papurus-fairy-manuscript-vintage-letter_202007-1448-removebg-preview.png?raw=true">
+      <h2 class="aviso" id="aviso"></h2>
+      <div id="scrollResult" style="visibility:hidden">
+        <img id="scrollOpen" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/parchment-cartoon-scroll-empty-old-paper-scroll-blank-papurus-fairy-manuscript-vintage-letter_202007-1450-removebg-preview.png">
         <h2 class="resultado-final" id="resultado"></h2>
         <h2 class="resultado-final" id="resulModifc"></h2>
-        <button onclick="reiniciar()" id="btnreiniciar" disabled="true">Nova Partida</button>
-      </div>    
-    <form id="form">
-      <div class="batalha">
-        <div>
-          <div id="carta-jogador">
-            
-          </div>
-        </div>
-        <div>
-          <div id="carta-maquina" class="carta">
-            
-          </div>
-        </div>
-      </div>
-    </form>
+      </div>      
+    </div>
+
+    <div id="carta-maquina" class="carta"></div>
+    
+    <div class="msgInicial">
+      <h2 id="msgInicial">Escolha a sua ação e se você utilizará o efeito especial</h2>
+    </div>
+
+    <div class="comandos">
+      <button class="sortear" onclick="sortearCarta()" id="btnSortear">Sortear Personagem</button>
+      <button class="button-jogar" type="button" id="btnJogar" onclick="conferir()" disabled="true" style="visibility:hidden">Realizar movimento</button>
+      <button onclick="reiniciar()" id="btnreiniciar" disabled="true" style="visibility:hidden">Nova Partida</button>
+    </div>
+  
   </div>
 </body>
 
