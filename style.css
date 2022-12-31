@@ -1,3 +1,17 @@
+/* @font-face {
+    font-family: 'herculanum';
+    src: url('https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.eot?raw=true');
+    src: url('https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.eot?raw=true') format('embedded-opentype'),
+         url('https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.woff2?raw=true') format('woff2'),
+         url('https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.woff?raw=true') format('woff'),
+         url('https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.ttf?raw=true') format('truetype'),
+         url('https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/2dce56b0d3c6f06674c3e87114c5ec22a6c74785/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&display=swap');
+
 /* html {
   background-image: url("https://64.media.tumblr.com/83b434c237a781b667d07868a9691716/14eb10f1f44fffe6-1d/s1280x1920/67299f8465a48b95cdfa5f52f40604c6d0ee569b.png");
   background-position: center top;
@@ -6,160 +20,351 @@
 } */
 
 body {
-  font-family: "Roboto Mono", monospace;
-  background-image: url("http://27.media.tumblr.com/tumblr_ljgbphSDv01qewk6no1_500.gif");
+  display: flex;
+  justify-content: center;
+  
+/*   font-family: "herculanum"; */
+  font-family: 'Aref Ruqaa Ink', serif;
+  background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/tumblr_ljgbphSDv01qewk6no1_500.gif");
   background-color: black;
-  background-position: center bottom left;
+  background-position: center left;
   background-repeat: no-repeat;
   background-size: cover;
-/*   padding: 1px; */
-/*   padding-bottom: 170px; */
-/*   margin: 0px; */
   align-items: center;
-/*   height: 450px; */
 }
 
 .container {
-  text-align: center;
-  padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 16px;
-  justify-content: space-between;
-/*   width: 100%; */
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  grid-gap: 10px;
+  
+/*   border: 2px solid #585858; */
+}
+
+.container div {
+/*   border: 2px solid #585858; */
+}
+
+#page-title {
+/*   grid-column-start: 1;
+  grid-column-end: 4;
+  ou */
+/*   GRID ÁREA
+    grid-row-start
+    grid-column-start
+    grid-row-end
+    grid-column-end */
+  grid-area: 1/1/1/4;
 }
 
 .page-title {
-  display: flwx;
-  color: #424242;
-  font-size: 30px;
-  text-align: center;
-  background-color: #dedede;
   align-self: flex-center;
-  box-sizing: border-box;
-  border-radius: 100px;
+  color: #424242;
+  font-size: 40px;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  text-shadow: 4px 4px 7px white
+  
+/*   border: 2px solid #585858; */
+}
+
+#carta-jogador {
+  grid-area: 2/1/2/1;
+}
+
+.mensagens {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+/*   /\ essa é a triáde para deixar elementos verticais no centro */
+  
+  width: 310px;
+  height: 100%;
+  flex-basis: 100%;
+  grid-area: 2/2/2/2;
+  
+/*   border: 2px solid #585858; */
+}
+
+.scrollReverse {
+  margin-left: -30px;
+  margin-top: 0px;
+  position: relative;
+  width: 290px;
+  height: 300px;
+  z-index: -1;
+  animation: rotateSlide 2s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+.scrollClosed {
+  margin-left: -30px;
+  margin-top: 0px;
+  position: relative;
+  width: 280px;
+  height: 300px;
+  z-index: -1;
+  animation: rotateSlide 2.5s ease;
+  animation-fill-mode: forwards;
+}
+
+#scrollClosed:hover {
+  animation: waggleScroll 1s;
+}
+
+@keyframes waggleScroll {
+  0% {
+    transform: rotateZ(0deg)
+  }
+  25% {
+    transform: rotateZ(-10deg)
+  }
+  50% {
+    transform: rotateZ(0deg)
+  }
+  75% {
+    transform: rotateZ(-10deg)
+  }
+  100% {
+    transform: rotateZ(0deg)
+  }
+}
+
+@keyframes rotateSlide {
+  0% {
+    transform: rotateZ(0deg);
+    right: 0px;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotateZ(-90deg);
+    right: 75px;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInRoll {
+  0% {
+    opacity: 0;
+    width: 0%;
+    height: 500;
+  }
+  100% {
+    opacity: 1;
+    width: 400;
+    height: 500;
+  }
+}
+
+.scrollOpen {
+  margin-left: -50px;
+  margin-top: 0px;
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  z-index: -1;
+  
+  animation: fadeInRoll 2s 0.4s ease;
+  animation-fill-mode: forwards;
+}
+
+.aviso {
+  font-weight: 400;
+  font-size: 18px;
+  color: #dedede;
+  text-transform: uppercase;
+  position: absolute;
+  padding-bottom: 130px;
+  text-shadow: 4px 4px 7px black
+}
+
+.resultado-final {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 0px;
+  margin-right: 20px;
+  margin-left: 60px;
+  color: #424242;
+  text-transform: uppercase;
+  position: static;
+  
+  animation: fadeInRoll 2s 3s ease;
+  animation-fill-mode: forwards;
+  
+/*   border: 2px solid #585858; */
+}
+
+#scrollResult {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#carta-maquina {
+  grid-area: 2/3/2/4;
+}
+
+.msgInicial {
+/*   background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/parchment-cartoon-scroll-empty-old-paper-scroll-blank-papurus-fairy-manuscript-vintage-letter_202007-1450-removebg-preview.png"); */
+  grid-area: 3/1/4/3;
+  font-size: 12px;
+  color: #dedede;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 3px black;
+  text-align: left;
+/*   border-radius: 20px;
+  background-color: #dedede;
   border: 2px solid #585858;
-  padding: 8px 16px;
-  box-shadow: 2px 2px 4px rgb(16 16 16 / 42%);
-  margin-bottom: 0px;
+  box-shadow: 2px 2px 4px rgb(16 16 16 / 42%); */
+}
+
+/* #msgInicial {
+  
+} */
+
+.comandos {
+  display: flex;
+  flex-direction: inline;
+  justify-content: right;
+  
+  width: 300px;
+  grid-area: 3/3/4/4;
+  flex-basis: 100%;
+  
+/*   border: 2px solid #585858; */
 }
 
 button {
+  font-family: 'Aref Ruqaa Ink', serif;
   align-self: flex-start;
+  font-family: "Roboto", monospace;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 20px;
   box-sizing: border-box;
   box-shadow: 2px 2px 4px rgba(16, 16, 16, 0.42);
   background: #97918c;
   border: 2px solid #585858;
   border-radius: 100px;
-  padding: 8px 16px;
+  padding: 10px;
   color: #dedede;
-}
-
-h2 {
-  color: white;
-  align-self: flex-start;
+  position: absolute;
+  margin-top: -20px;
 }
 
 #carta-jogador,
 #carta-maquina {
-  width: 360px;
+  width: 300px;
+  height: 400px;
+  font-size: 15px;
+  display: grid;
+  grid-template: column;
+  grid-template-rows: 1px 90px 150px 65px 65px;
+  text-transform: uppercase;
+  
+  /*   border: 2px solid #585858; */
+}
+
+#imagemFundo {
+  margin-left: -252px;
+  margin-top: -50px;
+  position: absolute;
+  width: 500px;
   height: 500px;
-  overflow: auto;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  background-size: 350px 300px;
-  background-repeat: no-repeat;
-  background-position-x: 5px;
-  background-position-y: 10px;
-  border-radius: 33px;
+  z-index: -1;
+  
+/*   border: 2px solid #585858; */
 }
 
-#carta-jogador h3 {
-  text-align: center;
+#carta-subtitle {
+  font-size: 20px;
+  margin: 25px;
+  vertical-align: middle;
+  color: white;
+  text-shadow: 4px 4px 8px white
+  
+/*   border: 2px solid #585858; */
 }
 
-.carta-imagem {
-  border: 1px solid black;
-  height: 100px;
-  margin: 10px;
-}
-
-.carta-imagem img {
-  width: 100%;
-  height: 100%;
+#imagemCarta{
+  width: 150px;
+  height: 150px;
+  object-fit: content;
 }
 
 .carta-status {
-  height: 160px;
-  margin: 2rem;
-  color: white;
-  z-index: 2;
-}
-
-.carta-status input {
-  margin: 20px 10px;
-}
-
-.resultado-final {
-  font-weight: 400;
-  font-size: 15px;
-  border-radius: 20px;
-  padding: 8px 16px;
-  color: #424242;
-  text-transform: uppercase;
-  background-color: #dedede;
-  border: 2px solid #585858;
-  box-shadow: 2px 2px 4px rgb(16 16 16 / 42%);
-}
-
-.--spacing {
-  margin-left: 2.5rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.batalha {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  justify-content: space-between;
-/*   width: 100%; */
-}
-
-.carta-subtitle {
-  z-index: 2;
-  position: absolute;
-  top: 16px;
-  left: 37px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-.carta-efeito {
-  z-index: 1;
-  position: absolute;
-  top: 400px;
-  left: 0px;
-  font-weight: 800;
-  text-transform: lowercase;
-}
-
-#cartas {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+  padding-top: 5px;
 }
 
 .carta-status p {
-  margin-bottom: 2rem;
+  margin: 6px;
+}
+
+#cartaStatusMaq, #cartaStatusJog {
+  padding-top: -5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+input {
+  appearance: none;
+
+/*   border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px; */
+}
+
+.sombreado, .hooverLabel {
+  transition: all 0.5s ease-out;
+  padding: 3px;
+  padding-top: -10px;
+  border-radius: 10px;
+}
+
+.hooverLabel:hover,
+input:checked + .sombreado {
+  box-shadow: inset 0 0 5px black, inset 0 0 5px black, inset 0 0 5px black, inset 0 0 5px black;
+  border-radius: 10px;
+}
+
+input:checked + .hooverLabel {
+  box-shadow: inset 0 0 5px black, inset 0 0 5px black, inset 0 0 5px black, inset 0 0 5px black;
+  border-radius: 10px;
+}
+
+.habilidade {
+  text-align: justify;
+  font-size: 11px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  
+/*   border: 2px solid #585858; */
+}
+
+#carta-efeito {
+  margin-top: -20px;
+  padding: 5px;
 }
