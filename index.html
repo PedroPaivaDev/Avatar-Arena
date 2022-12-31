@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - ID5-Avatar-Arena-Aula08</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>Avatar-Arena</title>
+</head>
+  
+<body>
+  <audio src="https://youtu.be/P4YIg1DupB8" autoplay=true>O seu navegador não suporta o elemento.</audio>
+  <h1 class="page-title">Avatar-Arena</h1>
+  <div class="container">
+      <div>
+        <button class="sortear" onclick="sortearCarta()" id="btnSortear">Sortear Personagem</button>
+        <h2 class="resultado-final">Escolha a sua ação e se você utilizará o efeito especial</h2>
+        <button class="button-jogar" type="button" id="btnJogar" onclick="jogar()" disabled="false">Realizar movimento</button>
+        <h2 class="resultado-final" id="resultado"></h2>
+        <h2 class="resultado-final" id="resulModifc"></h2>
+        <button onclick="reiniciar()" id="btnreiniciar" disabled="true">Nova Partida</button>
+      </div>    
+    <form id="form">
+      <div class="batalha">
+        <div>
+          <div id="carta-jogador">
+            
+          </div>
+        </div>
+        <div>
+          <div id="carta-maquina" class="carta">
+            
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
