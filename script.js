@@ -1,6 +1,5 @@
-// Adicionar efeito sonoro pra cada elemento
-// Cada carta mexe quando faz o som
-// Estilizar o botão de ação
+// "https://cdn.videvo.net/videvo_files/audio/premium/audio0083/watermarked/ElectricitySpark%206039_62_3_preview.mp3"
+// reduzir um pouco o tamanho das cartas, para caber na tela retrato do celular, talvez reduzir o tamanho das fontes e do GIF.
 // fazer animação das cartas saindo do botão
 // Adicionar 10 pontos de vida para cada carta
 // Adicionar mais cartas
@@ -17,7 +16,8 @@ let carta1 = {
     maqAtq: ["Ataque", 0.5],
     jogDef: ["Defesa", 0.4],
     maqDef: ["Defesa", 1]
-  }
+  },
+  noise: "https://cdn.videvo.net/videvo_files/audio/premium/audio0083/watermarked/Electronic%206039_51_3_preview.mp3"
 };
 
 let carta2 = {
@@ -32,7 +32,8 @@ let carta2 = {
     maqDef: ["Defesa", 0.7],
     jogDef: ["Defesa", 1],
     maqAtq: ["Ataque", 0.7]
-  }
+  },
+  noise: "https://cdn.videvo.net/videvo_files/audio/premium/audio0194/watermarked/WaterSplash%20L2WATER_57_2_preview.mp3"
 };
 
 let carta3 = {
@@ -47,7 +48,8 @@ let carta3 = {
     maqAtq: ["Ataque", 1],
     jogDef: ["Defesa", 0.5],
     maqDef: ["Defesa", 1]
-  }
+  },
+  noise: "https://cdn.videvo.net/videvo_files/audio/premium/audio0171/watermarked/SwordBody%20IE01_86_2_preview.mp3"
 };
 
 let carta4 = {
@@ -62,7 +64,8 @@ let carta4 = {
     maqAtq: ["Ataque", 0.4],
     jogDef: ["Defesa", 0.6],
     maqDef: ["Defesa", 0.4]
-  }
+  },
+  noise: "https://cdn.videvo.net/videvo_files/audio/premium/audio0152/watermarked/RockFall%20IE01_80_3_preview.mp3"
 };
 
 let carta5 = {
@@ -77,7 +80,8 @@ let carta5 = {
     maqAtq: ["Ataque", 1],
     jogDef: ["Defesa", 1],
     maqDef: ["Defesa", 0.5]
-  }
+  },
+  noise: "https://cdn.videvo.net/videvo_files/audio/premium/audio0089/watermarked/Fire%206083_83_2_preview.mp3"
 };
 
 var cartas = [carta1, carta2, carta3, carta4, carta5];
@@ -96,8 +100,15 @@ function sortearCarta() {
 
   document.getElementById("btnSortear").disabled = true;
   document.getElementById("btnJogar").disabled = false;
-  document.getElementById("btnSortear").style.visibility = "hidden"
+  
+  setTimeout(() => {
+    document.getElementById("btnSortear").classList.remove("unrollButton")
+    // document.getElementById("btnJogar").classList.remove("wrapButton")
+    document.getElementById("btnSortear").style.visibility = "hidden"
+  },2000)  
+  // document.getElementById("btnSortear").classList.add("wrapButton")
   document.getElementById("btnJogar").style.visibility = "visible"
+  document.getElementById("btnJogar").classList.add("unrollButton")
 
   exibirCartaJogador();
   exibirCartaMaquina();
@@ -261,17 +272,32 @@ function jogar() {
       cartaJogador.atributos[atributoJogador].toFixed(2) +
       " pontos).";
   }
-
+  
+  let audio1 = new Audio(cartaJogador.noise)
+  let audio2 = new Audio(cartaMaquina.noise)
+  
   document.getElementById("btnJogar").disabled = true;
   document.getElementById("btnreiniciar").disabled = false;
-  document.getElementById("btnJogar").style.visibility = "hidden"
+  
+  setTimeout(() => {
+    document.getElementById("btnJogar").classList.remove("unrollButton")
+    // document.getElementById("btnreiniciar").classList.remove("wrapButton")
+    document.getElementById("btnJogar").style.visibility = "hidden"
+  },2000)  
+  // document.getElementById("btnJogar").classList.add("wrapButton")
   document.getElementById("btnreiniciar").style.visibility = "visible"
+  document.getElementById("btnreiniciar").classList.add("unrollButton")
   
   document.getElementById("scrollClosed").classList.add("scrollClosed")
   document.getElementById("scrollOpen").classList.add("scrollOpen")
   
+  document.getElementById("carta-jogador").classList.add("waggle")
+  audio1.play()
+  
   setTimeout(() => {
     document.getElementById("scrollResult").style.visibility = "visible"
+    audio2.play()
+    document.getElementById("carta-maquina").classList.add("waggle")
   }, 2000)
 }
 
@@ -279,9 +305,8 @@ function exibirCartaJogador() {
   var divCartaJogador = document.getElementById("carta-jogador");
   
   divCartaJogador.innerHTML = `
-  <div id="carta-jogador" style="display:on;">
         <div class="imagemFundo">
-          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview.png">
+          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview-removebg-preview.png">
         </div>
         <div class="nomeCarta">
           <p id="carta-subtitle">${cartaJogador.nome}</p>
@@ -318,7 +343,7 @@ function exibirCartaMaquina() {
   
   divCartaMaquina.innerHTML = `
   <div class="imagemFundo">
-          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview.png">
+          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview-removebg-preview.png">
         </div>
         <div class="nomeCarta">
           <p id="carta-subtitle">${cartaMaquina.nome}</p>
@@ -381,8 +406,18 @@ function reiniciar() {
   document.getElementById("scrollOpen").classList.remove("scrollOpen");
   document.getElementById("scrollResult").style.visibility = "hidden";
   
-  document.getElementById("btnreiniciar").style.visibility = "hidden"
+  
+  setTimeout(() => {
+    document.getElementById("btnreiniciar").classList.remove("unrollButton")
+    // document.getElementById("btnSortear").classList.remove("wrapButton")
+    document.getElementById("btnreiniciar").style.visibility = "hidden"
+  },100)  
+  // document.getElementById("btnreiniciar").classList.add("wrapButton")
   document.getElementById("btnSortear").style.visibility = "visible"
+  document.getElementById("btnSortear").classList.add("unrollButton")
+  
+  document.getElementById("carta-jogador").classList.remove("waggle")
+  document.getElementById("carta-maquina").classList.remove("waggle")
 }
 
 //console.log(Object.keys(carta1.modificadores))

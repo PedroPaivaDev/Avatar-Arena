@@ -19,63 +19,117 @@
   background-size: cover;
 } */
 
-body {
-  display: flex;
-  justify-content: center;
-  
-/*   font-family: "herculanum"; */
-  font-family: 'Aref Ruqaa Ink', serif;
-  background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/tumblr_ljgbphSDv01qewk6no1_500.gif");
-  background-color: black;
-  background-position: center left;
-  background-repeat: no-repeat;
-  background-size: cover;
-  align-items: center;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(3, auto);
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  grid-gap: 10px;
-  
-/*   border: 2px solid #585858; */
-}
-
-.container div {
-/*   border: 2px solid #585858; */
-}
-
-#page-title {
-/*   grid-column-start: 1;
-  grid-column-end: 4;
-  ou */
 /*   GRID ÁREA
     grid-row-start
     grid-column-start
     grid-row-end
     grid-column-end */
-  grid-area: 1/1/1/4;
+
+div {
+/*   border: 2px solid black; */
+}
+
+/*Para celulares em modo retrato*/
+@media (max-width: 450px) {
+  body {
+    background-image: url("https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/d5cmhl6-c70806f3-7cc9-4ee0-9c65-ecffc64087d9.jpg?raw=true");
+    background-repeat: repeat;
+    background-position: center top;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #page-title {
+    grid-area: 1/1/2/3;
+  }
+  
+  #carta-jogador {
+    grid-area: 2/1/3/2;
+    margin-top: 10px;
+  }
+
+  #carta-maquina {
+    grid-area: 2/2/3/3;
+    margin-top: 10px;
+  }
+  
+  #msgAndButtons {
+    grid-area: 3/1/4/3;
+  }
+}
+
+/*Para celulares em modo paisagem 768px*/
+@media (min-width: 450px) {
+  body {
+    background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/tumblr_ljgbphSDv01qewk6no1_500.gif");
+    background-color: black;
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #page-title {
+    grid-area: 1/1/2/4;
+  }
+  
+  #carta-jogador {
+    grid-area: 2/1/3/2;
+    margin: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+  }
+
+  #carta-maquina {
+    grid-area: 2/2/3/3;
+    margin: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #msgAndButtons {
+    grid-area: 2/3/4/3;
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+/*   font-family: "herculanum"; */
+  font-family: 'Aref Ruqaa Ink', serif;
+  align-items: center;
+}
+
+.container {
+  min-width: 400px;
+  max-width: 900px;
+  min-height: 320px;
+  max-height: 880px;
 }
 
 .page-title {
   align-self: flex-center;
   color: #424242;
-  font-size: 40px;
+  font-size: 20px;
   text-align: center;
   padding: 0px;
   margin: 0px;
-  text-shadow: 4px 4px 7px white
-  
-/*   border: 2px solid #585858; */
-}
-
-#carta-jogador {
-  grid-area: 2/1/2/1;
+  margin-top: -10px;
+  text-shadow: 4px 4px 7px white;
 }
 
 .mensagens {
@@ -85,12 +139,30 @@ body {
   
 /*   /\ essa é a triáde para deixar elementos verticais no centro */
   
-  width: 310px;
-  height: 100%;
-  flex-basis: 100%;
-  grid-area: 2/2/2/2;
+  width: 370px;
+  height: 170px;
+/*   flex-basis: 100%; */
+/*   padding-top: 30px; */
+}
+
+.msgInicial {
+  color: #424242;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 3px white;
+  font-size: 7px;
+  text-align: center;
+}
+
+.comandos {
+  display: flex;
+  flex-direction: inline;
+  justify-content: right;
   
-/*   border: 2px solid #585858; */
+  width: 330px;
+  flex-basis: 100%;
+/*   padding-right: 40px;
+  margin-top: -80px;
+  margin-left: 120px; */
 }
 
 .scrollReverse {
@@ -106,32 +178,38 @@ body {
 }
 
 .scrollClosed {
-  margin-left: -30px;
-  margin-top: 0px;
   position: relative;
-  width: 280px;
-  height: 300px;
   z-index: -1;
   animation: rotateSlide 2.5s ease;
   animation-fill-mode: forwards;
 }
 
-#scrollClosed:hover {
-  animation: waggleScroll 1s;
+#scrollClosed {
+  width: 180px;
+  height: 80px;
+  margin-left: 100px;  
 }
 
-@keyframes waggleScroll {
+.waggle {
+  animation: waggle 0.7s;
+}
+
+  #scrollClosed:hover {
+  animation: waggle 1s;
+}
+
+@keyframes waggle {
   0% {
     transform: rotateZ(0deg)
   }
   25% {
-    transform: rotateZ(-10deg)
+    transform: rotateZ(-7deg)
   }
   50% {
     transform: rotateZ(0deg)
   }
   75% {
-    transform: rotateZ(-10deg)
+    transform: rotateZ(-7deg)
   }
   100% {
     transform: rotateZ(0deg)
@@ -148,7 +226,7 @@ body {
   }
   100% {
     transform: rotateZ(-90deg);
-    right: 75px;
+    right: 140px;
     opacity: 0;
   }
 }
@@ -167,33 +245,33 @@ body {
 }
 
 .scrollOpen {
-  margin-left: -50px;
-  margin-top: 0px;
-  position: absolute;
-  width: 400px;
-  height: 500px;
-  z-index: -1;
-  
   animation: fadeInRoll 2s 0.4s ease;
   animation-fill-mode: forwards;
 }
 
-.aviso {
-  font-weight: 400;
-  font-size: 18px;
-  color: #dedede;
-  text-transform: uppercase;
+#scrollOpen {
+  width: 350px;
+  height: 180px;
+  margin-left: -60px;
   position: absolute;
-  padding-bottom: 130px;
-  text-shadow: 4px 4px 7px black
+  z-index: -1;
+}
+
+#scrollResult {
+  position: absolute;
+  width: 250px;
+  height: 170px;
+  padding-left: 70px;
+  padding-right: 50px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .resultado-final {
   font-weight: 400;
   font-size: 12px;
-  margin-top: 0px;
-  margin-right: 20px;
-  margin-left: 60px;
   color: #424242;
   text-transform: uppercase;
   position: static;
@@ -204,114 +282,127 @@ body {
 /*   border: 2px solid #585858; */
 }
 
-#scrollResult {
-  position: absolute;
-  width: 300px;
-  height: 400px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#carta-maquina {
-  grid-area: 2/3/2/4;
-}
-
-.msgInicial {
-/*   background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/parchment-cartoon-scroll-empty-old-paper-scroll-blank-papurus-fairy-manuscript-vintage-letter_202007-1450-removebg-preview.png"); */
-  grid-area: 3/1/4/3;
+.aviso {
+  font-weight: 400;
   font-size: 12px;
-  color: #dedede;
+  color: #424242;
   text-transform: uppercase;
-  text-shadow: 2px 2px 3px black;
-  text-align: left;
-/*   border-radius: 20px;
-  background-color: #dedede;
-  border: 2px solid #585858;
-  box-shadow: 2px 2px 4px rgb(16 16 16 / 42%); */
+  position: absolute;
+  padding-bottom: 130px;
+  padding-left: 80px;
+  text-shadow: 4px 4px 7px white;
 }
 
-/* #msgInicial {
-  
-} */
+.wrapButton {
+  animation: slideRight 2s;
+  animation-fill-mode: forwards;
+}
 
-.comandos {
-  display: flex;
-  flex-direction: inline;
-  justify-content: right;
-  
-  width: 300px;
-  grid-area: 3/3/4/4;
-  flex-basis: 100%;
-  
-/*   border: 2px solid #585858; */
+.unrollButton {
+  animation: slideRight 1s;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
+}
+
+@keyframes slideRight{
+  0% {
+    width: 210px;
+    height: 40px;
+    font-size: 12px;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+    font-size: 0.001px;
+  }
 }
 
 button {
   font-family: 'Aref Ruqaa Ink', serif;
   align-self: flex-start;
-  font-family: "Roboto", monospace;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 20px;
-  box-sizing: border-box;
+/*   font-family: "Roboto", monospace; */
+  font-size: 12px;
   box-shadow: 2px 2px 4px rgba(16, 16, 16, 0.42);
-  background: #97918c;
+  background: #dedede;
   border: 2px solid #585858;
   border-radius: 100px;
-  padding: 10px;
-  color: #dedede;
+  color: #424242;
   position: absolute;
-  margin-top: -20px;
+  margin-top: 10px;
+  margin-right: -40px;
+  padding-right: 30px;
+  padding-left: 15px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* #btnSortear {
+  z-index: 0;
+}
+#btnJogar {
+  z-index: -1;
+}
+#btnreiniciar {
+  z-index: -2;
+} */
+
+#selo {
+  position: relative;
+  margin-right: -55px;
+  width: 80px;
+  height: auto;
 }
 
 #carta-jogador,
 #carta-maquina {
-  width: 300px;
-  height: 400px;
-  font-size: 15px;
+  width: 180px;
+  height: 280px;
+  font-size: 10px;
   display: grid;
   grid-template: column;
-  grid-template-rows: 1px 90px 150px 65px 65px;
+  grid-template-rows: 1px 60px 80px 40px 70px;
   text-transform: uppercase;
-  
-  /*   border: 2px solid #585858; */
+/*   z-index: 1; */
 }
 
 #imagemFundo {
-  margin-left: -252px;
-  margin-top: -50px;
+  margin-left: -90px;
+  margin-top: -10px;
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 180px;
+  height: 290px;
   z-index: -1;
   
 /*   border: 2px solid #585858; */
 }
 
+.nomeCarta {
+  padding: 0px;
+}
+
 #carta-subtitle {
-  font-size: 20px;
-  margin: 25px;
+  font-size: 15px;
   vertical-align: middle;
   color: white;
-  text-shadow: 4px 4px 8px white
+  text-shadow: 4px 4px 8px white;
+  margin: 5px;
   
 /*   border: 2px solid #585858; */
 }
 
 #imagemCarta{
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   object-fit: content;
+  margin-top: 0px;
 }
 
 .carta-status {
-  padding-top: 5px;
+  padding-top: 0px;
 }
 
 .carta-status p {
-  margin: 6px;
+  margin: 3px;
 }
 
 #cartaStatusMaq, #cartaStatusJog {
@@ -356,15 +447,16 @@ input:checked + .hooverLabel {
 
 .habilidade {
   text-align: justify;
-  font-size: 11px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 30px;
+  font-size: 9px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
   
 /*   border: 2px solid #585858; */
 }
 
 #carta-efeito {
-  margin-top: -20px;
-  padding: 5px;
+  margin-top: -17px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
