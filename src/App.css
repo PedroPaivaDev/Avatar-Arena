@@ -9,6 +9,19 @@
 	font-size: 100%;
 }
 
+body {
+  height: 100vh;
+  background: url('/src/assets/backWeb.gif') no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+}
+
+@media (max-width: 40rem) {
+  body {
+    background-position: bottom left -280px;
+  }
+}
+
 a {
 	text-decoration: none;
 	color: black;
