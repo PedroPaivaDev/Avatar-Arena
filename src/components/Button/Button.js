@@ -1,8 +1,12 @@
 import React from 'react';
+import styles from './Button.module.css';
 
 const Button = () => {
   return (
-    <button>Mostrar</button>
+    <div className={styles.container}>
+      <input type='button' className={styles.button}/>
+      <label className={styles.label}>Realizar Movimento</label>
+    </div>
   )
 }
 

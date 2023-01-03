@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.button {
+    --sealWidth: 70px;
+    --sealHeight: 50px;
+
+    background: url('/src/assets/scrollSeal.png') no-repeat center right;
+    background-size: var(--sealWidth) var(--sealHeight);
+
+    display: block;
+    position: absolute;
+    width: var(--sealWidth);
+    height: var(--sealHeight);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.label {
+    display: block;
+    position: absolute;
+    background: #dedede;
+    padding: 2px 10px;
+    animation: strech 1s forwards ease-in;
+    margin-right: 15px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+@keyframes strech {
+    0% {
+        width: 10px;
+        font-size: 0.001px;
+    }
+    100% {
+        width: 190px;
+        font-size: initial;
+    }
+}

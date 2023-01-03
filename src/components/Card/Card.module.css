@@ -1,0 +1,9 @@
+.cardFace {
+    --cardFaceWidth: 170px;
+    --cardFaceHeight: 300px;
+
+    width: var(--cardFaceWidth);
+    height: var(--cardFaceHeight);
+    background: url('/src/assets/cardFace.png') no-repeat;
+    background-size: var(--cardFaceWidth) var(--cardFaceHeight);
+}

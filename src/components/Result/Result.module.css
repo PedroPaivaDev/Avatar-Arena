@@ -1,0 +1,9 @@
+.result {
+    --scrollOpenWidth: 300px;
+    --scrollOpenHeight: 200px;
+
+    width: var(--scrollOpenWidth);
+    height: var(--scrollOpenHeight);
+    background: url('/src/assets/scrollOpen.png');
+    background-size: var(--scrollOpenWidth) var(--scrollOpenHeight);
+}
