@@ -5,7 +5,7 @@ const Button = () => {
   return (
     <div className={styles.container}>
       <input type='button' className={styles.button}/>
-      <label className={styles.label}>Realizar Movimento</label>
+      <label className={styles.label}>Realizar Movimento .</label>
     </div>
   )
 }

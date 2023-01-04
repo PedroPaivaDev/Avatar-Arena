@@ -1,4 +1,4 @@
-export default cards = [
+const cards = [
     {
         name: "Aang",
         image: "https://data.whicdn.com/images/115410440/original.gif",
@@ -77,4 +77,6 @@ export default cards = [
         },
         noise: "https://cdn.videvo.net/videvo_files/audio/premium/audio0089/watermarked/Fire%206083_83_2_preview.mp3"
     },
-]
+];
+
+export default cards;
