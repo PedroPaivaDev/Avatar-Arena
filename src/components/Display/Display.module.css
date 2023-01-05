@@ -1,0 +1,11 @@
+.cards {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.resulAndButton {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

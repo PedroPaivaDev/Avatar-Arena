@@ -1,16 +1,19 @@
 import React from 'react';
 
-const Input = ({label, value, option, setOption, ...props}) => {
+const Input = ({id, className, label, value, option, setOption, ...props}) => {
   return (
-    <label>
-      <input
+    <>
+      <input 
+        id={label}
         value={value}
-        checked={value === option}
-        onChange={({target}) => console.log(target.value)}
+        defaultChecked={option === value}
+        onChange={({target}) => setOption(target.value)}
         {...props}
       />
-      <span>{`${label} ${value}`}</span>
-    </label>
+      <label htmlFor={label} className={className}>
+        {`${label} ${value}`}
+      </label>
+    </>
   )
 }
 
