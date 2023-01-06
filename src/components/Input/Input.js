@@ -1,16 +1,18 @@
 import React from 'react';
 
-const Input = ({id, className, label, value, option, setOption, ...props}) => {
+const Input = ({className, label, value, state, setState, disabled, name, ...props}) => {
   return (
     <>
       <input 
-        id={label}
+        disabled={disabled}
+        id={`${name + label}`}
         value={value}
-        defaultChecked={option === value}
-        onChange={({target}) => setOption(target.value)}
+        // defaultChecked={state === value}
+        onChange={({target}) => setState(target.value)}
+        name={name}
         {...props}
       />
-      <label htmlFor={label} className={className}>
+      <label htmlFor={`${name + label}`} className={className}>
         {`${label} ${value}`}
       </label>
     </>
