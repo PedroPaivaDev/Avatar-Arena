@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Result.module.css';
 
-const Result = () => {
+const Result = ({result}) => {
   return (
-    <div className={`${styles.result} result`}></div>
+    <div className={`${styles.result} result`}>{result}</div>
   )
 }
 

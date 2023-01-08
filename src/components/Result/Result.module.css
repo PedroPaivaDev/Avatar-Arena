@@ -6,4 +6,10 @@
     height: var(--scrollOpenHeight);
     background: url('/src/assets/scrollOpen.png');
     background-size: var(--scrollOpenWidth) var(--scrollOpenHeight);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
 }

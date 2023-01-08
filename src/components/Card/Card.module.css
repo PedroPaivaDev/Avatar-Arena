@@ -1,6 +1,6 @@
 .cardFace {
     --cardFaceWidth: 170px;
-    --cardFaceHeight: 300px;
+    --cardFaceHeight: 310px;
 
     width: var(--cardFaceWidth);
     height: var(--cardFaceHeight);
@@ -31,14 +31,14 @@
     text-shadow: 2px 2px 3px black;
 
     position: relative;
-    top: 13px;
+    top: 15px;
 }
 
 .gif {
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
     position: relative;
-    top: 55px;
+    top: 50px;
 }
 
 .actions {
@@ -59,8 +59,8 @@
     top: 60px;
     font-size: 0.7rem;
     width: 135px;
-    padding: 3px;
-    padding-right: 8px;
+    margin-right: 8px;
+    padding: 3px 5px;
     text-align: justify;
 }
 

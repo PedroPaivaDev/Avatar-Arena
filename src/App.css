@@ -74,3 +74,13 @@ img {
     flex-direction: column;
   }
 }
+
+.strech {
+  width: auto;
+  animation: strech 1s forwards ease-in;
+}
+
+@keyframes strech {
+  0% {width: 0;}
+  100% {width: 165px;}
+}
