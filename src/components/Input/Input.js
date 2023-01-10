@@ -1,20 +1,24 @@
 import React from 'react';
 
-const Input = ({className, label, value, state, setState, disabled, name, ...props}) => {
+const Input = ({options, state, setState, disabled, name, className, ...props}) => {
   return (
     <>
-      <input 
-        disabled={disabled}
-        id={`${name + label}`}
-        value={value}
-        // defaultChecked={state === value}
-        onChange={({target}) => setState(target.value)}
-        name={name}
-        {...props}
-      />
-      <label htmlFor={`${name + label}`} className={className}>
-        {`${label} ${value}`}
-      </label>
+      {Object.keys(options).map(option => 
+        <React.Fragment key={`${name + option}`}>
+          <input 
+            id={`${name + option}`}
+            value={Number(options[option])}
+            defaultChecked={state === Number(options[option])}
+            onChange={({target}) => setState(Number(target.value))}
+            name={name}
+            disabled={disabled}
+            {...props}
+          />
+          <label htmlFor={`${name + option}`} className={className}>
+            {`${option} ${options[option]}`}
+          </label>
+        </React.Fragment>
+      )}
     </>
   )
 }

@@ -1,10 +1,9 @@
+import Input from 'components/Input/Input';
 import React from 'react';
 import styles from './Card.module.css';
-import Input from '../Input/Input';
 
-const Card = ({card, id, disabled}) => {
-  const [action, setAction] = React.useState();
-  const [ability, setAbility] = React.useState();
+const Card = ({card, id, disabled, action, setAction}) => {
+  // const [ability, setAbility] = React.useState();
 
   return (
     <div className={styles.cardFace} id={card.name}>
@@ -13,25 +12,15 @@ const Card = ({card, id, disabled}) => {
       <img className={styles.gif} src={card.image} alt={card.name}/>
       <div className={styles.actions}>
         <Input
-          disabled={disabled}
-          label='Ataque'
-          value={card.attributes.attack}
+          options={card.attributes}
           state={action}
           setState={setAction}
           type='radio'
-          name={card.name}
-        />
-        <Input
           disabled={disabled}
-          label='Defesa'
-          value={card.attributes.defense}
-          state={action}
-          setState={setAction}
-          type='radio'
           name={card.name}
         />
       </div>
-      <Input
+      {/* <Input
         disabled={disabled}
         className={styles.ability}
         label={card.ability}
@@ -40,7 +29,7 @@ const Card = ({card, id, disabled}) => {
         setState={setAbility}
         type='checkbox'
         name={card.name}
-      />
+      /> */}
     </div>
   )
 }

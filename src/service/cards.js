@@ -13,7 +13,7 @@ const cards = [
     {
         name: "Aang",
         image: aang,
-        attributes: { attack: 3, defense: 6 },
+        attributes: { Ataque: 3, Defesa: 6 },
         ability:
             "Vento: Reduz a sua defesa em 60% e reduz o ataque do oponente em 50%",
         modifiers: {
@@ -28,7 +28,7 @@ const cards = [
     {
         name: "Katara",
         image: katara,
-        attributes: { attack: 6, defense: 4 },
+        attributes: { Ataque: 6, Defesa: 4 },
         ability:
             "Água: Reduz o ataque e defesa do oponente em 30% e reduz o seu ataque em 40%",
         modifiers: {
@@ -43,7 +43,7 @@ const cards = [
     {
         name: "Sokka",
         image: sokka,
-        attributes: { attack: 4, defense: 5 },
+        attributes: { Ataque: 4, Defesa: 5 },
         ability:
             "Berserker: Reduz a sua defesa em 50% e aumenta o seu ataque em 150%",
         modifiers: {
@@ -58,7 +58,7 @@ const cards = [
     {
         name: "Toph",
         image: toph,
-        attributes: { attack: 5, defense: 5 },
+        attributes: { Ataque: 5, Defesa: 5 },
         ability:
             "Terra: Reduz o seu ataque e defesa em 40% e Reduz em 60% o ataque e defesa do oponente",
         modifiers: {
@@ -73,7 +73,7 @@ const cards = [
     {
         name: "Zuko",
         image: zuko,
-        attributes: { attack: 6, defense: 3 },
+        attributes: { Ataque: 6, Defesa: 3 },
         ability:
             "Fogo: Reduz em 50% a defesa do oponente e reduz o seu ataque em 20%",
         modifiers: {
