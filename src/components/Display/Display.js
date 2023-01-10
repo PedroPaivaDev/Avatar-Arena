@@ -21,6 +21,9 @@ const Display = () => {
   const [playerAction, setPlayerAction] = React.useState(null);
   const [machineAction, setMachineAction] = React.useState(null);
 
+  const [playerAbility, setPlayerAbility] = React.useState(null);
+  const [machineAbility, setMachineAbility] = React.useState(null);
+
   function pickUpCard(deck) {
     const card = parseInt(Math.random()*(deck.length))
     return deck[card];
@@ -42,46 +45,36 @@ const Display = () => {
     if (playerAction===null) {
       setGuide('Você deve escolher um atributo.');
     } else {
+
       setGuide('');
-      showResult();
+
+      const machineChoiceAction = parseInt(Math.random() * 2);
+      if (machineChoiceAction===1) {
+        setMachineAction('Ataque');
+      } else {
+        setMachineAction('Defesa');
+      }
+
+      const machineChoiceAbility = parseInt(Math.random() * 2);
+      machineChoiceAbility===1 && setMachineAbility(true);
     }
   }
 
-  function showResult() {
-    const randomNumber = parseInt(Math.random() * 2);
-    if (randomNumber===1) {
-      setMachineAction(machineCard.attributes.Ataque);
-      // document.getElementById(`${machineCard.name}Ataque`).checked=true;
-      console.log('ataque', machineAction)
-    } else {
-      setMachineAction(machineCard.attributes.Defesa);
-      // document.getElementById(`${machineCard.name}Defesa`).checked=true;
-      console.log('defesa', machineAction)
-    }
-
-    // const machineAtack = document.getElementById(`${machineCard.name}Ataque`);
-    // const machineDefense = document.getElementById(`${machineCard.name}Defesa`);
-    // randomNumber===1 ? machineAtack.checked=true : machineDefense.checked=true;
-    // if (machineAtack.checked) {
-    //   setMachineAction(machineAtack.value)
-    // } else {
-    //   setMachineAction(machineDefense.value)
-    // }
-
-    // const machineChoiceAbility = parseInt(Math.random() * 2);
-    // const machineAbility = document.getElementById(machineCard.name + machineCard.ability);
-    // machineChoiceAbility===1 && (machineAbility.checked=true);
-
-    if (playerAction > machineAction) {
+  const showResult = React.useCallback((machineAction) => {
+    if (playerCard.attributes[playerAction] > machineCard.attributes[machineAction]) {
       setResult('O jogador venceu!')
-    } else if (playerAction < machineAction) {
+    } else if (playerCard.attributes[playerAction] < machineCard.attributes[machineAction]) {
       setResult('O oponente venceu!')
-    } else if (playerAction === machineAction) {
+    } else if (playerCard.attributes[playerAction] === machineCard.attributes[machineAction]) {
       setResult('Empate')
     }
 
     setSlide('Nova Partida');
-  }
+  }, [playerCard, playerAction, machineCard])
+
+  React.useEffect(() => {
+    machineAction!==null && showResult(machineAction);
+  },[machineAction, showResult])
 
   function resetGame() {
     setPlayerCard(null);
@@ -89,6 +82,9 @@ const Display = () => {
     setResult(null);
     setPlayerAction(null);
     setMachineAction(null);
+    setGuide(null);
+    setPlayerAbility(null);
+    setMachineAbility(null);
 
     setSlide('Sortear Carta');
   }
@@ -108,11 +104,15 @@ const Display = () => {
             card={playerCard}
             action={playerAction}
             setAction={setPlayerAction}
+            ability={playerAbility}
+            setAbility={setPlayerAbility}
           />
           <Card id='Oponente' disabled={true}
             card={machineCard}
             action={machineAction}
             setAction={setMachineAction}
+            ability={machineAbility}
+            setAbility={setMachineAbility}
           />
         </>
       </div>}

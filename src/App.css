@@ -84,9 +84,3 @@ img {
   0% {width: 0;}
   100% {width: 165px;}
 }
-
-.checked, input:checked + label {
-  transition: 0.3s;
-  box-shadow: inset 0 0 5px 1px black;
-  border-radius: 5px;
-}

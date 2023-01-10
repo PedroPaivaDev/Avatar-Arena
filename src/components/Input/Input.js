@@ -7,10 +7,9 @@ const Input = ({options, state, setState, disabled, name, className, ...props}) 
         <React.Fragment key={`${name + option}`}>
           <input 
             id={`${name + option}`}
-            value={Number(options[option])}
-            defaultChecked={state === Number(options[option])}
-            onChange={({target}) => setState(Number(target.value))}
-            name={name}
+            value={option}
+            checked={state === option}
+            onChange={({target}) => setState(target.value)}
             disabled={disabled}
             {...props}
           />

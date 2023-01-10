@@ -2,8 +2,7 @@ import Input from 'components/Input/Input';
 import React from 'react';
 import styles from './Card.module.css';
 
-const Card = ({card, id, disabled, action, setAction}) => {
-  // const [ability, setAbility] = React.useState();
+const Card = ({card, id, disabled, action, setAction, ability, setAbility}) => {
 
   return (
     <div className={styles.cardFace} id={card.name}>
@@ -20,16 +19,15 @@ const Card = ({card, id, disabled, action, setAction}) => {
           name={card.name}
         />
       </div>
-      {/* <Input
+      <input
+        id={`${card.name}Ability`}
         disabled={disabled}
-        className={styles.ability}
-        label={card.ability}
-        value=''
-        state={ability}
-        setState={setAbility}
+        value={true}
+        checked={ability===true}
+        onChange={({target}) => target.checked ? setAbility(Boolean(target.value)) : setAbility(null)}
         type='checkbox'
-        name={card.name}
-      /> */}
+      />
+      <label htmlFor={`${card.name}Ability`} className={styles.ability}>{card.ability}</label>
     </div>
   )
 }
