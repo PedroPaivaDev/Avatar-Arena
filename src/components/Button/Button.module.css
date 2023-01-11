@@ -29,7 +29,7 @@
     white-space: nowrap;
     margin-right: 35px;
     position: relative;
-    width: 165px;
+    width: 130px;
 
     border-radius: 10px;
     border: 1px solid gray;
@@ -45,17 +45,4 @@
     height: 80px;
     transform: rotate(-45deg);
     z-index: -10;
-}
-
-.container input:hover + .scrollClosed {
-    animation: waggle 1s;
-    /* background-color: aqua; */
-}
-
-@keyframes waggle {
-    0% {transform: rotate(-45deg)}
-    25% {transform: rotate(-55deg)}
-    50% {transform: rotate(-45deg)}
-    75% {transform: rotate(-55deg)}
-    100% {transform: rotate(-45deg)}
 }

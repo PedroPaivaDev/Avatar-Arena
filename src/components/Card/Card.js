@@ -24,7 +24,7 @@ const Card = ({card, id, disabled, action, setAction, ability, setAbility}) => {
         disabled={disabled}
         value={true}
         checked={ability===true}
-        onChange={({target}) => target.checked ? setAbility(Boolean(target.value)) : setAbility(null)}
+        onChange={({target}) => target.checked ? setAbility(Boolean(target.value)) : setAbility(false)}
         type='checkbox'
       />
       <label htmlFor={`${card.name}Ability`} className={styles.ability}>{card.ability}</label>

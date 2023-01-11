@@ -82,5 +82,49 @@ img {
 
 @keyframes strech {
   0% {width: 0;}
-  100% {width: 165px;}
+  100% {width: 130px;}
+}
+
+.waggleScroll:hover + #scrollClosed {
+    animation: waggleScroll 1s;
+}
+
+@keyframes waggleScroll {
+    0% {transform: rotate(-45deg)}
+    25% {transform: rotate(-55deg)}
+    50% {transform: rotate(-45deg)}
+    75% {transform: rotate(-55deg)}
+    100% {transform: rotate(-45deg)}
+}
+
+.waggleCard {
+  animation: waggleCard 1s;
+}
+
+@keyframes waggleCard {
+  0% {transform: rotate(0deg)}
+  25% {transform: rotate(5deg)}
+  50% {transform: rotate(0deg)}
+  75% {transform: rotate(5deg)}
+  100% {transform: rotate(0deg)}
+}
+
+.rotateSlide {
+    animation: rotateSlide 2s forwards;
+}
+
+@keyframes rotateSlide {
+    0% {
+        transform: rotateZ(0deg);
+        left: 0px;
+    }
+    90% {
+        opacity: 1;
+        top: -160px;
+    }
+    100% {
+        opacity: 0;
+        transform: rotateZ(-90deg);
+        left: -50px;
+    }
 }

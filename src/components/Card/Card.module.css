@@ -10,7 +10,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* animation: strechDown 5s forwards; */
 }
+
+/* @keyframes strechDown {
+    0% {height: 10px;}
+    100% {height: 310px;}
+} */
 
 .subtitle {
     text-align: center;
