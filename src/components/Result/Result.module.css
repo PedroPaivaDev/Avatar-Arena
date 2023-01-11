@@ -1,0 +1,62 @@
+.result {
+    /* --scrollOpenWidth: 300px;
+    --scrollOpenHeight: 200px;
+
+    width: var(--scrollOpenWidth);
+    height: var(--scrollOpenHeight);
+    background: url('/src/assets/scrollOpen.png');
+    background-size: var(--scrollOpenWidth) var(--scrollOpenHeight); */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-start;
+    width: 310px;
+    height: 200px;
+    margin-bottom: 20px;
+    animation: scale 1s;
+}
+
+@keyframes scale {
+    0% {
+        height: 0;
+        width: 0;
+    }
+    100% {
+        width: 310px;
+        height: 200px;
+    }
+}
+
+.result p {
+    width: 250px;
+    text-align: justify;
+    font-size: 0.8rem;
+    position: absolute;
+    padding-left: 30px;
+    align-self: center;
+    /* opacity: 0; */
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    95% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.result img {
+    width: 310px;
+    height: 200px;
+    align-self: flex-start;
+    z-index: -100;
+    position: relative;
+    left: 0px;
+    animation: openScroll 2s forwards;
+}
+
+@keyframes openScroll {
+    0% {width: 0;}
+    90% {width: 0; height: 190px;}
+    100% {width: 310px; height: 200px;}
+  }

@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'herculanum';
+  src: 
+    url('/src/assets/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.eot') format('embedded-opentype'),
+    url('/src/assets/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.woff2') format('woff2'),
+    url('/src/assets/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.woff') format('woff'),
+    url('/src/assets/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.ttf') format('truetype'),
+    url('/src/assets/webfontkit-20220924-113034/herculanum-lt-std-roman-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *:after, *:before {
+	margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-weight: 300;
+  box-sizing: border-box;
+  font-family: monospace;
+	font-size: 1rem;
+}
+
+body {
+  height: 100vh;
+  background: url('/src/assets/backWeb.gif') no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  padding: 5px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+ul {
+	list-style:none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-family: 'herculanum';
+  font-size: 1.5rem;
+  color: #424242;
+  text-shadow: 1px 1px 5px white;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  gap: 10px;
+}
+
+@media (max-width: 40rem) {
+  body {
+    background-position: bottom left -280px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.strech {
+  width: auto;
+  animation: strech 1s forwards ease-in;
+}
+
+@keyframes strech {
+  0% {width: 0;}
+  100% {width: 130px;}
+}
+
+.waggleScroll:hover + #scrollClosed {
+    animation: waggleScroll 1s;
+}
+
+@keyframes waggleScroll {
+    0% {transform: rotate(-45deg)}
+    25% {transform: rotate(-55deg)}
+    50% {transform: rotate(-45deg)}
+    75% {transform: rotate(-55deg)}
+    100% {transform: rotate(-45deg)}
+}
+
+.waggleCard {
+  animation: waggleCard 1s;
+}
+
+@keyframes waggleCard {
+  0% {transform: rotate(0deg)}
+  25% {transform: rotate(5deg)}
+  50% {transform: rotate(0deg)}
+  75% {transform: rotate(5deg)}
+  100% {transform: rotate(0deg)}
+}
+
+.rotateSlide {
+    animation: rotateSlide 2s forwards;
+}
+
+@keyframes rotateSlide {
+    0% {
+        transform: rotateZ(0deg);
+        left: 0px;
+    }
+    90% {
+        opacity: 1;
+        top: -160px;
+    }
+    100% {
+        opacity: 0;
+        transform: rotateZ(-90deg);
+        left: -50px;
+    }
+}

@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    right: 70px;
+    width: 200px;
+}
+
+.button {
+    --sealWidth: 70px;
+    --sealHeight: 50px;
+
+    background: url('/src/assets/scrollSeal.png') no-repeat center right;
+    background-size: var(--sealWidth) var(--sealHeight);
+
+    position: absolute;
+    width: var(--sealWidth);
+    height: var(--sealHeight);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.label {
+    font-size: 0.8rem;
+    overflow: hidden;
+    word-wrap: normal;
+    white-space: nowrap;
+    margin-right: 35px;
+    position: relative;
+    width: 130px;
+
+    border-radius: 10px;
+    border: 1px solid gray;
+    background: #dedede;
+    padding: 2px 10px;
+}
+
+.scrollClosed {
+    position: absolute;
+    top: -25px;
+    left: 70px;
+    width: 200px;
+    height: 80px;
+    transform: rotate(-45deg);
+    z-index: -10;
+}
