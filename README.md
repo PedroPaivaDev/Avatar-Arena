@@ -38,7 +38,7 @@ Esse foi o primeiro projeto pessoal que eu considero ter feito sozinho. Ele foi 
 | ------ | ------ |
 | versão_0.1 | Primeira versão do projeto, ainda utilizando o cartão fornecido pela Alura, mas com a implantação do modificador de atributos. Tentei adicoinar a fonte oficial da franquia, mas não obtive sucesso. |
 | versão_0.2 | Troquei as cartas, adicionei animações de CSS, mesclando com uma setTimeOut no JS. Arrumei o bug de mostrar as escolhas da maquina quando clicava em "jogar", sem selecionar os atributos da carta do jogador. Usei o DOM de visibility para ocultar botões e partes do HTML, conforme as animações desejadas eram mostradas. |
-| [versão_0.3](https://codepen.io/pedropaivadev/full/zYjoJYw) | Versão final utilizando *JavaScript Vanilla*. Reduzido o tamanho das cartas, para tornar o jogo responsivo para mobile. Adicionada mais animações e efeitos sonoros para cada carta. |
+| [versão_0.3](https://avatar-arena-git-v03-pedropaivadev.vercel.app/) | Versão final utilizando *JavaScript Vanilla*. Reduzido o tamanho das cartas, para tornar o jogo responsivo para mobile. Adicionada mais animações e efeitos sonoros para cada carta. |
 | [versão_1.1](https://avatar-arena-git-v11-pedropaivadev.vercel.app/) | Refatoração utilizando a biblioteca React e melhorada a estilização e resposividade. |
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
