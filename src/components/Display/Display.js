@@ -5,16 +5,20 @@ import cards from '../../service/cards';
 import Button from '../Button/Button';
 import Result from '../Result/Result';
 import Card from '../Card/Card';
+// import useForm from 'hooks/useForm';
 
 const Display = () => {
   const [slide, setSlide] = React.useState('Sortear Carta');
   const [result, setResult] = React.useState(null);
   const [guide, setGuide] = React.useState(null);
   const [timer, setTimer] = React.useState(false);
+
   // const [playerDeck, setPlayerDeck] = React.useState();
   // const [machineDeck, setMachineDeck] = React.useState();
+  // o slide 'sortear carta' vai se tornar 'escolher cartas'. As cartas escolhidas serão utilizadas como parâmetro para montar o deck da máquina, após o click do botão (na função showCards)
 
-  //o slide 'sortear carta' vai se tornar 'escolher cartas'. As cartas escolhidas serão utilizadas como parâmetro para montar o deck da máquina, após o click do botão (na função showCards)
+  // const player = useForm();
+  // usar o customHook para gerar os estados, quando for feita a mecânica de jogo com várias cartas.
 
   const [playerCard, setPlayerCard] = React.useState(null);
   const [machineCard, setMachineCard] = React.useState(null);
@@ -24,8 +28,6 @@ const Display = () => {
 
   const [playerAbility, setPlayerAbility] = React.useState(null);
   const [machineAbility, setMachineAbility] = React.useState(null);
-  
-  //Os cards originais estão sendo alterados... preciso encontrar uma forma deles serem apenas referências para cópias e não que eles sejam alterados.
 
   function pickUpCard(deck) {
     const card = parseInt(Math.random()*(deck.length))
@@ -34,8 +36,11 @@ const Display = () => {
 
   function showCards() {
     const playerSelection = parseInt(Math.random()*(cards.length));
-    const playerDeck = cards.filter(card => card === cards[playerSelection]);
-    const machineDeck = cards.filter((card) => card !== cards[playerSelection]);
+
+    const playerDeck = JSON.parse(JSON.stringify(cards.filter(card => 
+      card === cards[playerSelection])));
+    const machineDeck = JSON.parse(JSON.stringify(cards.filter((card) => 
+      card !== cards[playerSelection])));
 
     setPlayerCard(pickUpCard(playerDeck));
     setMachineCard(pickUpCard(machineDeck));
@@ -96,18 +101,21 @@ const Display = () => {
       setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
     } else if (playerCard.attributes[playerAction]<
       machineCard.attributes[machineAction]) {
-      setResult(`O oponente venceu! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
+      setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
     } else if (playerCard.attributes[playerAction]===
       machineCard.attributes[machineAction]) {
       setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
     }
     
     document.getElementById('masterBtn').classList.remove("waggleScroll");
-    document.getElementById('scrollClosed').classList.add("rotateSlide");
+    const scrollClosed = document.getElementById('scrollClosed');
+    scrollClosed && scrollClosed.classList.add("rotateSlide");
+
     document.getElementById(`${playerCard.name}`).classList.add("waggleCard");
     new Audio(playerCard.noise).play();
     setTimeout(() => {
-      document.getElementById(`${machineCard.name}`).classList.add("waggleCard");
+      const machineCardId = document.getElementById(`${machineCard.name}`);
+      machineCardId && machineCardId.classList.add("waggleCard");
       new Audio(machineCard.noise).play();
     }, 2000)
     setTimeout(() => {
@@ -123,13 +131,6 @@ const Display = () => {
   },[machineAction, machineAbility, showResult])
 
   function resetGame() {
-    //Este bloco de código é necessário para resetar os atributos das cartas, já que são as originais que estão sendo alteradas.
-    cards[0]['attributes'] = { Ataque: 3, Defesa: 6 };
-    cards[1]['attributes'] = { Ataque: 6, Defesa: 4 };
-    cards[2]['attributes'] = { Ataque: 4, Defesa: 5 };
-    cards[3]['attributes'] = { Ataque: 5, Defesa: 5 };
-    cards[4]['attributes'] = { Ataque: 6, Defesa: 3 };
-
     document.getElementById('masterBtn').classList.add("waggleScroll");
     setPlayerCard(null);
     setMachineCard(null);
