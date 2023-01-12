@@ -32,7 +32,7 @@ div {
 /*Para celulares em modo retrato*/
 @media (max-width: 450px) {
   body {
-    background-image: url("https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/d5cmhl6-c70806f3-7cc9-4ee0-9c65-ecffc64087d9.jpg?raw=true");
+    background-image: url("https://github.com/PedroPaivaDev/Avatar-Arena/blob/Versão-3/d5cmhl6-c70806f3-7cc9-4ee0-9c65-ecffc64087d9.jpg?raw=true");
     background-repeat: repeat;
     background-position: center top;
   }
@@ -68,7 +68,7 @@ div {
 /*Para celulares em modo paisagem 768px*/
 @media (min-width: 450px) {
   body {
-    background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/tumblr_ljgbphSDv01qewk6no1_500.gif");
+    background-image: url("https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/Versão-3/tumblr_ljgbphSDv01qewk6no1_500.gif");
     background-color: black;
     background-position: center left;
     background-repeat: no-repeat;

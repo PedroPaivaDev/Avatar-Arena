@@ -306,7 +306,7 @@ function exibirCartaJogador() {
   
   divCartaJogador.innerHTML = `
         <div class="imagemFundo">
-          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview-removebg-preview.png">
+          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/Versão-3/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview-removebg-preview.png">
         </div>
         <div class="nomeCarta">
           <p id="carta-subtitle">${cartaJogador.nome}</p>
@@ -343,7 +343,7 @@ function exibirCartaMaquina() {
   
   divCartaMaquina.innerHTML = `
   <div class="imagemFundo">
-          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/main/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview-removebg-preview.png">
+          <img id="imagemFundo" src="https://raw.githubusercontent.com/PedroPaivaDev/Avatar-Arena/Versão-3/wooden-board-with-parchment-paper-cartoon-style-graphical-user-interface-signboard_313437-1235-removebg-preview-removebg-preview.png">
         </div>
         <div class="nomeCarta">
           <p id="carta-subtitle">${cartaMaquina.nome}</p>
