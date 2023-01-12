@@ -2,13 +2,14 @@ import React from 'react';
 
 const useForm = () => {
 
-  const [value, setValue] = React.useState('');
+  const [action, setAction] = React.useState();
+  const [ability, setAbility] = React.useState();
 
   function onChange({target}) {
-    setValue(target.value);
+    setAction(target.value);
   }
 
-  return {value, setValue, onChange}
+  return {action, setAction, ability, setAbility, onChange}
 }
 
 export default useForm;
