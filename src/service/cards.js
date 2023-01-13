@@ -8,6 +8,8 @@ import toph from 'assets/cardsAssets/toph.gif';
 import earth from 'assets/cardsAssets/noise-earth.mp3';
 import zuko from 'assets/cardsAssets/zuko.gif';
 import fire from 'assets/cardsAssets/noise-fire.mp3';
+import azula from 'assets/cardsAssets/azula.gif';
+import lightning from 'assets/cardsAssets/noise-lightning.mp3';
 
 const cards = [
     {
@@ -45,12 +47,12 @@ const cards = [
         image: sokka,
         attributes: { Ataque: 4, Defesa: 5 },
         ability:
-            "Berserker: Reduz a sua defesa em 50% e aumenta o seu ataque em 150%",
+            "Berserker: Reduz a sua defesa em 50% e aumenta o seu ataque em 50%",
         modifiers: {
             playerAtq: ["Ataque", 1.5],
-            machineDef: ["Ataque", 1],
+            machineAtq: ["Ataque", 1],
             playerDef: ["Defesa", 0.5],
-            machineAtq: ["Defesa", 1]
+            machineDef: ["Defesa", 1]
         },
         noise: sword
     },
@@ -63,9 +65,9 @@ const cards = [
             "Terra: Reduz o seu ataque e defesa em 40% e Reduz em 60% o ataque e defesa do oponente",
         modifiers: {
             playerAtq: ["Ataque", 0.6],
-            machineDef: ["Ataque", 0.4],
+            machineAtq: ["Ataque", 0.4],
             playerDef: ["Defesa", 0.6],
-            machineAtq: ["Defesa", 0.4]
+            machineDef: ["Defesa", 0.4]
         },
         noise: earth
     },
@@ -75,14 +77,29 @@ const cards = [
         image: zuko,
         attributes: { Ataque: 6, Defesa: 3 },
         ability:
-            "Fogo: Reduz em 50% a defesa do oponente e reduz o seu ataque em 20%",
+            "Fogo: Reduz em 40% a defesa do oponente e reduz o seu ataque em 20%",
         modifiers: {
             playerAtq: ["Ataque", 0.8],
-            machineDef: ["Ataque", 1],
+            machineAtq: ["Ataque", 1],
             playerDef: ["Defesa", 1],
-            machineAtq: ["Defesa", 0.5]
+            machineDef: ["Defesa", 0.6]
         },
         noise: fire
+    },
+
+    {
+        name: "Azula",
+        image: azula,
+        attributes: { Ataque: 5, Defesa: 5 },
+        ability:
+            "Relâmpago: Reduz seu ataque em 40%, reduz sua defesa em 60% e reduz a defesa do oponente em 60%",
+        modifiers: {
+            playerAtq: ["Ataque", 0.6],
+            machineAtq: ["Ataque", 1],
+            playerDef: ["Defesa", 0.4],
+            machineDef: ["Defesa", 0.4]
+        },
+        noise: lightning
     },
 ];
 
