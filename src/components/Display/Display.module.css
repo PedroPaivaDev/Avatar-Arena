@@ -1,5 +1,6 @@
 .display {
-    transition: 3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .cards {

@@ -1,0 +1,34 @@
+.cardFace {
+    --faceWidth: 100px;
+    --faceHeight: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--faceWidth);
+    min-height: var(--faceHeight);
+}
+
+.cardFrame {
+    width: var(--faceWidth);
+    height: var(--faceHeight);
+    position: absolute;
+}
+
+.name {
+    text-align: center;
+    font-family: 'herculanum';
+    font-size: 0.625rem;
+    color: #dedede;
+    text-shadow: 2px 2px 3px black;
+
+    position: relative;
+    top: -48px;
+    z-index: 2;
+}
+
+.cardGif {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    margin-top: 15px;
+}

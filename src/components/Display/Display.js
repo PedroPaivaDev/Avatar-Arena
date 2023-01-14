@@ -5,6 +5,7 @@ import cards from '../../service/cards';
 import Button from '../Button/Button';
 import Result from '../Result/Result';
 import Card from '../Card/Card';
+import CardSelector from 'components/CardSelector/CardSelector';
 // import useForm from 'hooks/useForm';
 
 const Display = () => {
@@ -13,9 +14,8 @@ const Display = () => {
   const [guide, setGuide] = React.useState(null);
   const [timer, setTimer] = React.useState(false);
 
-  // const [playerDeck, setPlayerDeck] = React.useState();
+  const [playerDeck, setPlayerDeck] = React.useState([]);
   // const [machineDeck, setMachineDeck] = React.useState();
-  // o slide 'sortear carta' vai se tornar 'escolher cartas'. As cartas escolhidas serão utilizadas como parâmetro para montar o deck da máquina, após o click do botão (na função showCards)
 
   // const player = useForm();
   // usar o customHook para gerar os estados, quando for feita a mecânica de jogo com várias cartas.
@@ -35,15 +35,20 @@ const Display = () => {
   }
 
   function showCards() {
+    // for (let char in playerDeck) {
+    //   setPlayerDeck(...cards.filter(card => card.name === playerDeck[char]))
+    //   console.log(playerDeck)
+    // }
+
     const playerSelection = parseInt(Math.random()*(cards.length));
 
-    const playerDeck = JSON.parse(JSON.stringify(cards.filter(card => 
+    const virtualPlayerDeck = JSON.parse(JSON.stringify(cards.filter(card => 
       card === cards[playerSelection])));
-    const machineDeck = JSON.parse(JSON.stringify(cards.filter((card) => 
+    const virtualMachineDeck = JSON.parse(JSON.stringify(cards.filter((card) => 
       card !== cards[playerSelection])));
 
-    setPlayerCard(pickUpCard(playerDeck));
-    setMachineCard(pickUpCard(machineDeck));
+    setPlayerCard(pickUpCard(virtualPlayerDeck));
+    setMachineCard(pickUpCard(virtualMachineDeck));
 
     setGuide('Escolha a sua ação e se você utilizará o efeito especial.')
     setSlide('Movimentar');
@@ -173,6 +178,13 @@ const Display = () => {
         </>}
       </div>
       <div className={styles.display}>
+        {slide==='Sortear Carta' && 
+          <CardSelector
+            cards={cards}
+            playerDeck={playerDeck}
+            setPlayerDeck={setPlayerDeck}
+          />
+        }
         {playerCard && machineCard && 
           <p className={styles.guide}>{guide}</p>
         }
