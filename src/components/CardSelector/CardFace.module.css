@@ -1,6 +1,7 @@
 .cardFace {
     --faceWidth: 100px;
     --faceHeight: 20px;
+
     display: flex;
     justify-content: center;
     min-width: var(--faceWidth);
@@ -16,25 +17,13 @@
     z-index: 20;
 }
 
-.cardFace:hover .cardFrame{
-    margin-top: -20px;
+.cardFace:hover .card > img{
     animation: showCard 0.3s forwards;
 }
 
 @keyframes showCard {
-    0% {width: 100px; height: 20px;}
-    to {width: 170px; height: 310px;}
-}
-
-.cardFace:hover .cardGif{
-    display: block;
-    animation: opacity 0.4s forwards;
-}
-
-@keyframes opacity {
-    0% {opacity: 0;}
-    80% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {width: var(--faceWidth); height: var(--faceHeight);}
+    100% {width: 170px; height: 310px;}
 }
 
 .label {
@@ -48,24 +37,11 @@
     cursor: pointer;
 }
 
-.cardFrame {
+.card > img {
     width: var(--faceWidth);
     height: var(--faceHeight);
-    position: absolute;
 }
 
-.name {
-    text-align: center;
-    font-family: 'herculanum';
-    font-size: 17px;
-    color: #dedede;
-    text-shadow: 2px 2px 3px black;
-
-    position: relative;
-    top: 19px;
-}
-
-.label > div {
+.card label, .card img:nth-child(4) {
     display: none;
-    position: absolute;
 }
