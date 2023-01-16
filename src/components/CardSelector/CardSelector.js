@@ -5,7 +5,7 @@ import CardFace from './CardFace';
 const CardSelector = ({cards, ...props}) => {
   return (
     <div className={styles.cardSelector}>
-      {cards.map(card => <CardFace key={card.name} card={card} cards={cards} {...props}/>)}
+      {cards.map(card => <CardFace key={card.name} card={card} {...props}/>)}
     </div>
   )
 }

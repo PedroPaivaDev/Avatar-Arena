@@ -15,7 +15,7 @@ const Display = () => {
   const [timer, setTimer] = React.useState(false);
 
   const [playerDeck, setPlayerDeck] = React.useState([]);
-  // const [machineDeck, setMachineDeck] = React.useState();
+  const [machineDeck, setMachineDeck] = React.useState();
 
   // const player = useForm();
   // usar o customHook para gerar os estados, quando for feita a mecânica de jogo com várias cartas.
@@ -34,18 +34,29 @@ const Display = () => {
     return deck[card];
   }
 
+  function makeVirtualDeck(characters) {
+    let virtualDeck = [];
+    for (let char in characters) {
+      virtualDeck = [...virtualDeck, ...cards.filter(card => 
+        card.name === characters[char]
+      )]
+    }
+    return JSON.parse(JSON.stringify(virtualDeck))
+  }
+
+  React.useEffect(() => {
+    let machineCharacters = cards.map(char => char.name);
+    for (let char in playerDeck) {
+      machineCharacters = machineCharacters.filter(card => 
+        card !== playerDeck[char])
+    }
+    setMachineDeck(machineCharacters);
+  },[playerDeck])
+
   function showCards() {
-    // for (let char in playerDeck) {
-    //   setPlayerDeck(...cards.filter(card => card.name === playerDeck[char]))
-    //   console.log(playerDeck)
-    // }
 
-    const playerSelection = parseInt(Math.random()*(cards.length));
-
-    const virtualPlayerDeck = JSON.parse(JSON.stringify(cards.filter(card => 
-      card === cards[playerSelection])));
-    const virtualMachineDeck = JSON.parse(JSON.stringify(cards.filter((card) => 
-      card !== cards[playerSelection])));
+    let virtualPlayerDeck = makeVirtualDeck(playerDeck);
+    let virtualMachineDeck = makeVirtualDeck(machineDeck);
 
     setPlayerCard(pickUpCard(virtualPlayerDeck));
     setMachineCard(pickUpCard(virtualMachineDeck));
