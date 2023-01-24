@@ -55,6 +55,11 @@ const Display = () => {
 
   function showCards() {
 
+    if(playerDeck.length===0) {
+      setGuide('Escolha os personagens para o seu baralho')
+      return
+    }
+
     let virtualPlayerDeck = makeVirtualDeck(playerDeck);
     let virtualMachineDeck = makeVirtualDeck(machineDeck);
 
@@ -198,7 +203,7 @@ const Display = () => {
             setPlayerDeck={setPlayerDeck}
           />
         }
-        {playerCard && machineCard && 
+        {guide && 
           <p className={styles.guide}>{guide}</p>
         }
         <div className={styles.resulAndButton}>
