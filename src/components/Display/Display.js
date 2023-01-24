@@ -178,6 +178,7 @@ const Display = () => {
             setAction={setPlayerAction}
             ability={playerAbility}
             setAbility={setPlayerAbility}
+            className={styles.strechDown}
           />
           <Card id='Oponente' disabled={true}
             card={machineCard}
@@ -185,6 +186,7 @@ const Display = () => {
             setAction={setMachineAction}
             ability={machineAbility}
             setAbility={setMachineAbility}
+            className={styles.strechDown}
           />
         </>}
       </div>
