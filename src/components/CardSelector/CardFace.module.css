@@ -1,5 +1,5 @@
 .cardFace {
-    --faceWidth: 100px;
+    --faceWidth: 80px;
     --faceHeight: 20px;
 
     display: flex;

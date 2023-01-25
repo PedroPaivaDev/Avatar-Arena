@@ -14,7 +14,7 @@
     width: 310px;
     height: 200px;
     margin-bottom: 20px;
-    animation: scale 1s;
+    animation: scale 2s;
 }
 
 @keyframes scale {

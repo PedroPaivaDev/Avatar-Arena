@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: row;
     gap: 5px;
+    margin-left: 10px;
 }
 
 .resulAndButton {
@@ -25,7 +26,7 @@
     text-align: center;
     padding: 10px 20px;
     width: 320px;
-    height: 30px;
+    height: 50px;
 }
 
 .strechDown img:nth-child(1) {

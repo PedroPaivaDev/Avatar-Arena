@@ -56,7 +56,10 @@ const Display = () => {
   function showCards() {
 
     if(playerDeck.length===0) {
-      setGuide('Escolha os personagens para o seu baralho')
+      setGuide('Escolha três personagens para o seu baralho')
+      return
+    } else if (playerDeck.length>3) {
+      setGuide('Você deve escolher apenas três personagens para o seu baralho')
       return
     }
 
@@ -203,13 +206,13 @@ const Display = () => {
             setPlayerDeck={setPlayerDeck}
           />
         }
-        {guide && 
-          <p className={styles.guide}>{guide}</p>
-        }
         <div className={styles.resulAndButton}>
           {result && <Result result={result} machineAbility={machineAbility}/>}
           <Button scrollOpen={timer} label={slide} onClick={handleClick}/>
         </div>
+        {guide && 
+          <p className={styles.guide}>{guide}</p>
+        }
       </div>
     </>
   )
