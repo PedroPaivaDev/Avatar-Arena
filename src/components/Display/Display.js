@@ -6,7 +6,6 @@ import Button from '../Button/Button';
 import Result from '../Result/Result';
 import Card from '../Card/Card';
 import CardSelector from 'components/CardSelector/CardSelector';
-// import useForm from 'hooks/useForm';
 
 const Display = () => {
   const [slide, setSlide] = React.useState('Sortear Carta');
@@ -16,9 +15,6 @@ const Display = () => {
 
   const [playerDeck, setPlayerDeck] = React.useState([]);
   const [machineDeck, setMachineDeck] = React.useState();
-
-  // const player = useForm();
-  // usar o customHook para gerar os estados, quando for feita a mecânica de jogo com várias cartas.
 
   const [playerCard, setPlayerCard] = React.useState(null);
   const [machineCard, setMachineCard] = React.useState(null);
@@ -55,7 +51,7 @@ const Display = () => {
 
   function showCards() {
 
-    if(playerDeck.length===0) {
+    if(playerDeck.length===0 || playerDeck.length<3) {
       setGuide('Escolha três personagens para o seu baralho')
       return
     } else if (playerDeck.length>3) {
