@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import Result from '../Result/Result';
 import Card from '../Card/Card';
 import CardSelector from 'components/CardSelector/CardSelector';
+import useCard from 'hooks/useCard';
 
 const Display = () => {
   const [slide, setSlide] = React.useState('Sortear Carta');
@@ -16,14 +17,8 @@ const Display = () => {
   const [playerDeck, setPlayerDeck] = React.useState([]);
   const [machineDeck, setMachineDeck] = React.useState();
 
-  const [playerCard, setPlayerCard] = React.useState(null);
-  const [machineCard, setMachineCard] = React.useState(null);
-
-  const [playerAction, setPlayerAction] = React.useState(null);
-  const [machineAction, setMachineAction] = React.useState(null);
-
-  const [playerAbility, setPlayerAbility] = React.useState(null);
-  const [machineAbility, setMachineAbility] = React.useState(null);
+  const player = useCard();
+  const machine = useCard();
 
   function pickUpCard(deck) {
     const card = parseInt(Math.random()*(deck.length))
@@ -62,8 +57,8 @@ const Display = () => {
     let virtualPlayerDeck = makeVirtualDeck(playerDeck);
     let virtualMachineDeck = makeVirtualDeck(machineDeck);
 
-    setPlayerCard(pickUpCard(virtualPlayerDeck));
-    setMachineCard(pickUpCard(virtualMachineDeck));
+    player.setCard(pickUpCard(virtualPlayerDeck));
+    machine.setCard(pickUpCard(virtualMachineDeck));
 
     setGuide('Escolha a sua ação e se você utilizará o efeito especial.')
     setSlide('Movimentar');
@@ -71,7 +66,7 @@ const Display = () => {
 
   function validate() {
 
-    if (playerAction===null) {
+    if (player.action===null) {
       setGuide('Você deve escolher um atributo.');
     } else {
 
@@ -79,13 +74,13 @@ const Display = () => {
 
       const machineChoiceAction = parseInt(Math.random() * 2);
       if (machineChoiceAction===1) {
-        setMachineAction('Ataque');
+        machine.setAction('Ataque');
       } else {
-        setMachineAction('Defesa');
+        machine.setAction('Defesa');
       }
 
       const machineChoiceAbility = parseInt(Math.random() * 2);
-      machineChoiceAbility===1?setMachineAbility(true):setMachineAbility(false);
+      machineChoiceAbility===1?machine.setAbility(true):machine.setAbility(false);
     }
   }
 
@@ -113,53 +108,53 @@ const Display = () => {
       }
     }
 
-    playerAbility && modifierAction(playerCard, machineCard);
-    machineAbility && modifierAction(machineCard, playerCard);
+    player.ability && modifierAction(player.card, machine.card);
+    machineAbility && modifierAction(machine.card, player.card);
 
-    if (playerCard.attributes[playerAction]>
-      machineCard.attributes[machineAction]) {
-      setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
-    } else if (playerCard.attributes[playerAction]<
-      machineCard.attributes[machineAction]) {
-      setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
-    } else if (playerCard.attributes[playerAction]===
-      machineCard.attributes[machineAction]) {
-      setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machineCard.attributes[machineAction]} pontos) e você estava em modo de ${playerAction} (${playerCard.attributes[playerAction]} pontos).`)
+    if (player.card.attributes[player.action]>
+      machine.card.attributes[machineAction]) {
+      setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`)
+    } else if (player.card.attributes[player.action]<
+      machine.card.attributes[machineAction]) {
+      setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`)
+    } else if (player.card.attributes[player.action]===
+      machine.card.attributes[machineAction]) {
+      setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`)
     }
     
     document.getElementById('masterBtn').classList.remove("waggleScroll");
     const scrollClosed = document.getElementById('scrollClosed');
     scrollClosed && scrollClosed.classList.add("rotateSlide");
 
-    document.getElementById(`${playerCard.name}`).classList.add("waggleCard");
-    new Audio(playerCard.noise).play();
+    document.getElementById(`${player.card.name}`).classList.add("waggleCard");
+    new Audio(player.card.noise).play();
     setTimeout(() => {
-      const machineCardId = document.getElementById(`${machineCard.name}`);
+      const machineCardId = document.getElementById(`${machine.card.name}`);
       machineCardId && machineCardId.classList.add("waggleCard");
-      new Audio(machineCard.noise).play();
+      new Audio(machine.card.noise).play();
     }, 2000)
     setTimeout(() => {
       setTimer(true);
     }, 1800)
 
     setSlide('Nova Partida');
-  }, [machineCard, playerCard, playerAction, playerAbility])
+  }, [machine.card, player.card, player.action, player.ability])
 
   React.useEffect(() => {
-    machineAction!==null && machineAbility!==null && 
-    showResult(machineAction, machineAbility);
-  },[machineAction, machineAbility, showResult])
+    machine.action!==null && machine.ability!==null && 
+    showResult(machine.action, machine.ability);
+  },[machine.action, machine.ability, showResult])
 
   function resetGame() {
     document.getElementById('masterBtn').classList.add("waggleScroll");
-    setPlayerCard(null);
-    setMachineCard(null);
+    player.setCard(null);
+    machine.setCard(null);
     setResult(null);
-    setPlayerAction(null);
-    setMachineAction(null);
+    player.setAction(null);
+    machine.setAction(null);
     setGuide(null);
-    setPlayerAbility(null);
-    setMachineAbility(null);
+    player.setAbility(null);
+    machine.setAbility(null);
     setTimer(false);
 
     setSlide('Sortear Carta');
@@ -175,21 +170,21 @@ const Display = () => {
   return (
     <>
       <div className={styles.cards}>
-        {playerCard && machineCard && <>
+        {player.card && machine.card && <>
           <Card id='Jogador' disabled={slide==='Nova Partida'?true:false}
-            card={playerCard}
-            action={playerAction}
-            setAction={setPlayerAction}
-            ability={playerAbility}
-            setAbility={setPlayerAbility}
+            card={player.card}
+            action={player.action}
+            setAction={player.setAction}
+            ability={player.ability}
+            setAbility={player.setAbility}
             className={styles.strechDown}
           />
           <Card id='Oponente' disabled={true}
-            card={machineCard}
-            action={machineAction}
-            setAction={setMachineAction}
-            ability={machineAbility}
-            setAbility={setMachineAbility}
+            card={machine.card}
+            action={machine.action}
+            setAction={machine.setAction}
+            ability={machine.ability}
+            setAbility={machine.setAbility}
             className={styles.strechDown}
           />
         </>}
@@ -203,7 +198,7 @@ const Display = () => {
           />
         }
         <div className={styles.resulAndButton}>
-          {result && <Result result={result} machineAbility={machineAbility}/>}
+          {result && <Result result={result} machineAbility={machine.ability}/>}
           <Button scrollOpen={timer} label={slide} onClick={handleClick}/>
         </div>
         {guide && 
