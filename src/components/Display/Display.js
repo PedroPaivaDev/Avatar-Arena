@@ -9,7 +9,7 @@ import CardSelector from 'components/CardSelector/CardSelector';
 import useCard from 'hooks/useCard';
 
 const Display = () => {
-  const [slide, setSlide] = React.useState('Sortear Carta');
+  const [slide, setSlide] = React.useState('Iniciar');
   const [result, setResult] = React.useState(null);
   const [guide, setGuide] = React.useState(null);
   const [timer, setTimer] = React.useState(false);
@@ -113,13 +113,15 @@ const Display = () => {
 
     if (player.card.attributes[player.action]>
       machine.card.attributes[machineAction]) {
-      setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`)
+      setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
+      machine.setLifePoints(machine.lifePoints - player.card.attributes[player.action]);
     } else if (player.card.attributes[player.action]<
       machine.card.attributes[machineAction]) {
-      setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`)
+      setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
+      player.setLifePoints(player.lifePoints - machine.card.attributes[machineAction]);
     } else if (player.card.attributes[player.action]===
       machine.card.attributes[machineAction]) {
-      setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`)
+      setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
     }
     
     document.getElementById('masterBtn').classList.remove("waggleScroll");
@@ -138,14 +140,22 @@ const Display = () => {
     }, 1800)
 
     setSlide('Nova Partida');
-  }, [machine.card, player.card, player.action, player.ability])
+  }, [machine, player])
 
   React.useEffect(() => {
     machine.action!==null && machine.ability!==null && 
     showResult(machine.action, machine.ability);
-  },[machine.action, machine.ability, showResult])
+  },[machine.action, machine.ability])
 
   function resetGame() {
+
+    if(player.lifePoints<0) {
+      setPlayerDeck(playerDeck.filter(card => card !== player.card.name));
+    }
+    if(machine.lifePoints<0) {
+      setMachineDeck(machineDeck.filter(card => card !== machine.card.name));
+    }
+
     document.getElementById('masterBtn').classList.add("waggleScroll");
     player.setCard(null);
     machine.setCard(null);
@@ -157,12 +167,12 @@ const Display = () => {
     machine.setAbility(null);
     setTimer(false);
 
-    setSlide('Sortear Carta');
+    (playerDeck===0 || machineDeck===0) ? setSlide('Iniciar') : setSlide('Sortear Carta');
   }
 
   function handleClick() {
     document.querySelector('.labelBtn').classList.add('strech')
-    if(slide==='Sortear Carta') return showCards()
+    if(slide==='Sortear Carta' || slide==='Iniciar') return showCards()
     if(slide==='Movimentar') return validate()
     if(slide==='Nova Partida') return resetGame()
   }
@@ -178,6 +188,7 @@ const Display = () => {
             ability={player.ability}
             setAbility={player.setAbility}
             className={styles.strechDown}
+            {...player}
           />
           <Card id='Oponente' disabled={true}
             card={machine.card}
@@ -186,11 +197,12 @@ const Display = () => {
             ability={machine.ability}
             setAbility={machine.setAbility}
             className={styles.strechDown}
+            {...machine}
           />
         </>}
       </div>
       <div className={styles.display}>
-        {slide==='Sortear Carta' && 
+        {slide==='Iniciar' && 
           <CardSelector
             cards={cards}
             playerDeck={playerDeck}

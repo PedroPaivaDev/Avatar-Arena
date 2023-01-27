@@ -67,9 +67,18 @@
     top: 60px;
     font-size: 0.7rem;
     width: 135px;
+    height: 70px;
     margin-right: 8px;
     padding: 3px 5px;
     text-align: justify;
+    animation: opacity var(--opacityTime) forwards;
+}
+
+.life {
+    position: relative;
+    top: 67px;
+    font-size: 1rem;
+    z-index: 1000;
     animation: opacity var(--opacityTime) forwards;
 }
 

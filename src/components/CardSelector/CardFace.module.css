@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-.card label, .card img:nth-child(4) {
+.card label, .card img:nth-child(4), .card p {
     display: none;
 }
 
