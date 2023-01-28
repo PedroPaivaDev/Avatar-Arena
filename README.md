@@ -10,7 +10,7 @@ O projeto é uma *Single-Page Application* feita com componentes **React** e est
 <img src="./src/assets/Anima.gif" alt="gif"/>
 
 ## Instruções
-Para iniciar a partida, basta clicar no selo vermelho do pergaminho e você receberá uma carta aleatória dos cinco personagens cadastrados: Aang, Katara, Sokka, Toph e Suko.
+A tela inicial apresenta um menu de seleção com os seis personagens cadastrados: Aang, Katara, Sokka, Toph, Suko e Azula. O jogador devera escolher exatamente três personagens, para compor o seu baralho de cartas. As cartas remanescentes irão compor o baralho do oponente (máquina). Após a seleção das cartas, basta clicar no selo vermelho do pergaminho e o jogador receberá uma carta aleatória dentre as três selecionadas no menu.
 
 As cartas são mostradas e identificadas como *Jogador* e *Oponente*. A carta do oponente faz escolhas aleatórias de ataque, defesa e pode ou não utilizar o efeito especial. O jogador por sua vez deve analisar as possibilidades de jogo do oponente, para escolher o seu atributo de ataque ou defesa e se é viável utilizar o efeito especial da sua carta, visto que algumas cartas podem modificar atributos de outras.
 
@@ -32,14 +32,15 @@ npm start
 
 ## Histórico de versões
 
-Esse foi o primeiro projeto pessoal que eu considero ter feito sozinho. Ele foi imprescindível para fixar os meus conhecimentos de **JavaScript**, **CSS** e **HTML**. Na época eu ainda não sabia utilizar o git e gitHub da melhor forma, mas é possível verificar alguns deploys das versões na tabela baixo.
+Esse foi o primeiro projeto pessoal que eu considero ter feito sozinho. Ele foi imprescindível para fixar os meus conhecimentos de **JavaScript**, **CSS** e **HTML**. Na época eu ainda não sabia utilizar o git e gitHub da melhor forma, mas é possível verificar alguns deploys das versões na tabela abaixo.
 
 | Versão | Update |
 | ------ | ------ |
-| versão_0.1 | Primeira versão do projeto, ainda utilizando o cartão fornecido pela Alura, mas com a implantação do modificador de atributos. Tentei adicoinar a fonte oficial da franquia, mas não obtive sucesso. |
+| versão_0.1 | Primeira versão do projeto, ainda utilizando o cartão fornecido pela Alura, mas com a implantação do modificador de atributos. Tentei adicionar a fonte oficial da franquia, mas não obtive sucesso. |
 | versão_0.2 | Troquei as cartas, adicionei animações de CSS, mesclando com uma setTimeOut no JS. Arrumei o bug de mostrar as escolhas da maquina quando clicava em "jogar", sem selecionar os atributos da carta do jogador. Usei o DOM de visibility para ocultar botões e partes do HTML, conforme as animações desejadas eram mostradas. |
 | [versão_0.3](https://avatar-arena-git-v03-pedropaivadev.vercel.app/) | Versão final utilizando *JavaScript Vanilla*. Reduzido o tamanho das cartas, para tornar o jogo responsivo para mobile. Adicionada mais animações e efeitos sonoros para cada carta. |
 | [versão_1.1](https://avatar-arena-git-v11-pedropaivadev.vercel.app/) | Refatoração utilizando a biblioteca React e melhorada a estilização e resposividade. |
+| [versão_1.2](https://avatar-arena-git-v12-pedropaivadev.vercel.app/) | Adicionada a personagem Azula e a tela inicial de seleção das cartas, para compor o baralho do jogador e da máquina. Também foi adicionado um Custom Hook para criar os estados de cada carta, mas essa funcionalidade será mais utilizada na próxima versão. |
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 

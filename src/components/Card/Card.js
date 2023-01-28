@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Card.module.css';
 import cardFrame from 'assets/cardFace.png';
 
-const Card = ({card, id, disabled, action, setAction, ability, setAbility, className, lifePoints}) => {
+const Card = ({card, id, disabled, action, setAction, ability, setAbility, className}) => {
 
   return (
     <div className={`${styles.cardFace} ${className}`} id={card.name}>
@@ -30,7 +30,7 @@ const Card = ({card, id, disabled, action, setAction, ability, setAbility, class
         type='checkbox'
       />
       <label htmlFor={`${card.name}Ability`} className={styles.ability}>{card.ability}</label>
-      <p className={styles.life}>Vida: {lifePoints}/10</p>
+      {/* <p className={styles.life}>Vida: {lifePoints}/10</p> */}
     </div>
   )
 }
