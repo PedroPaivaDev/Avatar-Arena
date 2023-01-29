@@ -30,7 +30,7 @@ const Card = ({card, id, disabled, action, setAction, ability, setAbility, class
         type='checkbox'
       />
       <label htmlFor={`${card.name}Ability`} className={styles.ability}>{card.ability}</label>
-      {/* <p className={styles.life}>Vida: {lifePoints}/10</p> */}
+      <p className={styles.life}>Vida: {card.lifePoints}/10</p>
     </div>
   )
 }

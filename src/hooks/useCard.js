@@ -5,7 +5,6 @@ const useCard = () => {
   const [card, setCard] = React.useState(null);
   const [action, setAction] = React.useState(null);
   const [ability, setAbility] = React.useState(null);
-  const [lifePoints, setLifePoints] = React.useState(10);
 
   // function onChangeAction({target}) {
   //   setAction(target.value);
@@ -19,7 +18,7 @@ const useCard = () => {
   //   }
   // }
 
-  return {card, setCard, action, setAction, ability, setAbility, lifePoints, setLifePoints}
+  return {card, setCard, action, setAction, ability, setAbility}
 }
 
 export default useCard;

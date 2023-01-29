@@ -24,6 +24,7 @@ const cards = [
             playerDef: ["Defesa", 0.4],
             machineDef: ["Defesa", 1]
         },
+        lifePoints: 1,
         noise: wind
     },
 
@@ -39,6 +40,7 @@ const cards = [
             playerDef: ["Defesa", 1],
             machineDef: ["Defesa", 0.7]
         },
+        lifePoints: 1,
         noise: water
     },
 
@@ -54,6 +56,7 @@ const cards = [
             playerDef: ["Defesa", 0.5],
             machineDef: ["Defesa", 1]
         },
+        lifePoints: 1,
         noise: sword
     },
 
@@ -69,6 +72,7 @@ const cards = [
             playerDef: ["Defesa", 0.6],
             machineDef: ["Defesa", 0.4]
         },
+        lifePoints: 1,
         noise: earth
     },
 
@@ -84,6 +88,7 @@ const cards = [
             playerDef: ["Defesa", 1],
             machineDef: ["Defesa", 0.6]
         },
+        lifePoints: 1,
         noise: fire
     },
 
@@ -99,6 +104,7 @@ const cards = [
             playerDef: ["Defesa", 0.4],
             machineDef: ["Defesa", 0.4]
         },
+        lifePoints: 1,
         noise: lightning
     },
 ];
