@@ -13,66 +13,43 @@ const Display = () => {
   const [result, setResult] = React.useState(null);
   const [guide, setGuide] = React.useState(null);
   const [timer, setTimer] = React.useState(false);
-  //mudar o selector para fazer uma cópia de deck e não um array de nomes
-  //a única coisa que vai alterar no estado do deck, é a vida de cada carta
-  //talvez colocar os decks no context
-
-  //ignorar o acima? o playerDeck vai virar playerSelection
-  //criar um estado para criar uma cópia de "card", exclusivo para a renderização
+ 
   //mostrar em tela as outras duas cartas, para ver a vida de cada uma.
-  //mudar função de resetGame para não remover as cartas do array do Deck, mas sim:
-  //na pickUpCard, filtrar a escolha apenas para as cartas com vida maior que zero
-  const [playerDeck, setPlayerDeck] = React.useState([]);
-  const [machineDeck, setMachineDeck] = React.useState();
+  //mudar a remoção da carta do deck para o selection
+  const [playerSelection, setPlayerSelection] = React.useState([]);
+  const [machineSelection, setMachineSelection] = React.useState([]);
 
-  //usar isso para fazer o playerDeck e o machineDeck, mas usando o json string
-  const teste = cards.reduce((newCards, newCard) => {
-    return {...newCards, [newCard.name]: newCard}
-  }, {})
-  console.log(teste.Aang)
+  const [playerDeck, setPlayerDeck] = React.useState({});
+  const [machineDeck, setMachineDeck] = React.useState({});
 
   const player = useCard();
   const machine = useCard();
 
-  function pickUpCard(deck) {
-    const card = parseInt(Math.random()*(deck.length))
-    return deck[card];
+  function pickUpCard(selection, deck) {
+    const randomNumber = parseInt(Math.random()*(selection.length));
+    const randomCard = selection[randomNumber];
+    return JSON.parse(JSON.stringify(deck[randomCard]));
   }
 
-  function makeVirtualDeck(characters) {
-    let virtualDeck = [];
-    for (let char in characters) {
-      virtualDeck = [...virtualDeck, ...cards.filter(card => 
-        card.name === characters[char]
-      )]
-    }
-    return JSON.parse(JSON.stringify(virtualDeck))
-  }
+  function start() {
 
-  React.useEffect(() => {
-    let machineCharacters = cards.map(char => char.name);
-    for (let char in playerDeck) {
-      machineCharacters = machineCharacters.filter(card => 
-        card !== playerDeck[char])
-    }
-    setMachineDeck(machineCharacters);
-  },[playerDeck])
-
-  function showCards() {
-
-    if(playerDeck.length===0 || playerDeck.length<3) {
+    if(playerSelection.length===0 || playerSelection.length<3) {
       setGuide('Escolha três personagens para o seu baralho')
       return
-    } else if (playerDeck.length>3) {
+    } else if (playerSelection.length>3) {
       setGuide('Você deve escolher apenas três personagens para o seu baralho')
       return
     }
 
-    let virtualPlayerDeck = makeVirtualDeck(playerDeck);
-    let virtualMachineDeck = makeVirtualDeck(machineDeck);
+    showCards()
+    setSlide('Sortear Carta')
+  }
 
-    player.setCard(pickUpCard(virtualPlayerDeck));
-    machine.setCard(pickUpCard(virtualMachineDeck));
+  function showCards() {
+
+    player.setCard(pickUpCard(playerSelection, playerDeck));
+    machine.setCard(pickUpCard(machineSelection, machineDeck));
+    
 
     setGuide('Escolha a sua ação e se você utilizará o efeito especial.')
     setSlide('Movimentar');
@@ -128,11 +105,11 @@ const Display = () => {
     if (player.card.attributes[player.action]>
       machine.card.attributes[machineAction]) {
       setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
-      machine.card.lifePoints = (machine.card.lifePoints - player.card.attributes[player.action]);
+      machineDeck[machine.card.name].lifePoints -= player.card.attributes[player.action];
     } else if (player.card.attributes[player.action]<
       machine.card.attributes[machineAction]) {
       setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
-      player.card.lifePoints = (player.card.lifePoints - machine.card.attributes[machineAction]);
+      playerDeck[player.card.name].lifePoints -= machine.card.attributes[machineAction];
     } else if (player.card.attributes[player.action]===
       machine.card.attributes[machineAction]) {
       setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
@@ -153,6 +130,13 @@ const Display = () => {
       setTimer(true);
     }, 1800)
 
+    if(playerDeck[player.card.name].lifePoints<0) {
+      setPlayerSelection(playerSelection.filter(card => card !== player.card.name));
+    }
+    if(machineDeck[machine.card.name].lifePoints<0) {
+      setMachineSelection(machineSelection.filter(card => card !== machine.card.name));
+    }
+
     setSlide('Nova Partida');
   }, [machine, player])
 
@@ -162,13 +146,6 @@ const Display = () => {
   },[machine.action, machine.ability])
 
   function resetGame() {
-
-    if(player.card.lifePoints<0) {
-      setPlayerDeck(playerDeck.filter(card => card !== player.card.name));
-    }
-    if(machine.card.lifePoints<0) {
-      setMachineDeck(machineDeck.filter(card => card !== machine.card.name));
-    }
 
     document.getElementById('masterBtn').classList.add("waggleScroll");
     player.setCard(null);
@@ -181,14 +158,13 @@ const Display = () => {
     machine.setAbility(null);
     setTimer(false);
 
-    setSlide('Sortear Carta');
-
-    (playerDeck===0 || machineDeck===0) ? setSlide('Iniciar') : setSlide('Sortear Carta');
+    (playerSelection.length===0 || machineSelection.length===0) ? setSlide('Iniciar') : setSlide('Sortear Carta');
   }
 
   function handleClick() {
     document.querySelector('.labelBtn').classList.add('strech')
-    if(slide==='Sortear Carta' || slide==='Iniciar') return showCards()
+    if(slide==='Iniciar') return start()
+    if(slide==='Sortear Carta') return showCards()
     if(slide==='Movimentar') return validate()
     if(slide==='Nova Partida') return resetGame()
   }
@@ -199,10 +175,12 @@ const Display = () => {
         {player.card && machine.card && <>
           <Card id='Jogador' disabled={slide==='Nova Partida'?true:false}
             className={styles.strechDown}
+            lifePoints={playerDeck[player.card.name].lifePoints}
             {...player}
           />
           <Card id='Oponente' disabled={true}
             className={styles.strechDown}
+            lifePoints={machineDeck[machine.card.name].lifePoints}
             {...machine}
           />
         </>}
@@ -211,8 +189,12 @@ const Display = () => {
         {slide==='Iniciar' && 
           <CardSelector
             cards={cards}
-            playerDeck={playerDeck}
+            playerSelection={playerSelection}
+            setPlayerSelection={setPlayerSelection}
+            machineSelection={machineSelection}
+            setMachineSelection={setMachineSelection}
             setPlayerDeck={setPlayerDeck}
+            setMachineDeck={setMachineDeck}
           />
         }
         <div className={styles.resulAndButton}>
