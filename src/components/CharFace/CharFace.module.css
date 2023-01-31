@@ -1,0 +1,33 @@
+.cardFace {
+    /* --cardFaceWidth: 100px;
+    --cardFaceHeight: 100px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--cardFaceWidth);
+    height: var(--cardFaceHeight);
+    border: 4px solid #78381c;
+    background-color: #78381c;
+}
+
+.cardFrame {
+    width: var(--cardFaceWidth);
+    height: var(--cardFaceHeight);
+    position: absolute;
+}
+
+.face {
+    width: 70px;
+    height: 70px;
+    /* position: relative; */
+    /* top: 25px; */
+    animation: opacity var(--opacityTime) forwards;
+}
+
+.life {
+    margin-top: 5px;
+    color: #dedede;
+    font-size: 0.725rem;
+    z-index: 1;
+}

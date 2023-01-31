@@ -7,6 +7,7 @@ import Result from '../Result/Result';
 import Card from '../Card/Card';
 import CardSelector from 'components/CardSelector/CardSelector';
 import useCard from 'hooks/useCard';
+import TeamFace from 'components/CharFace/TeamFace';
 
 const Display = () => {
   const [slide, setSlide] = React.useState('Iniciar');
@@ -171,6 +172,9 @@ const Display = () => {
 
   return (
     <>
+      {slide!=='Iniciar' && 
+        <TeamFace selection={playerSelection} team={playerDeck} card={player.card}/>
+      }
       <div className={styles.cards}>
         {player.card && machine.card && <>
           <Card id='Jogador' disabled={slide==='Nova Partida'?true:false}
@@ -185,6 +189,9 @@ const Display = () => {
           />
         </>}
       </div>
+      {slide!=='Iniciar' && 
+        <TeamFace selection={machineSelection} team={machineDeck} card={machine.card}/>
+      }
       <div className={styles.display}>
         {slide==='Iniciar' && 
           <CardSelector

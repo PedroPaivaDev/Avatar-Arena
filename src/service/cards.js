@@ -1,13 +1,24 @@
+import faceAang from 'assets/cardsAssets/faceAang.png';
 import aang from 'assets/cardsAssets/aang.gif';
 import wind from 'assets/cardsAssets/noise-wind.mp3';
+
+import faceKatara from 'assets/cardsAssets/faceKatara.jpg';
 import katara from 'assets/cardsAssets/katara.gif';
 import water from 'assets/cardsAssets/noise-water.mp3';
+
+import faceSokka from 'assets/cardsAssets/faceSokka.png';
 import sokka from 'assets/cardsAssets/sokka.gif';
 import sword from 'assets/cardsAssets/noise-sword.mp3';
+
+import faceToph from 'assets/cardsAssets/faceToph.jpg';
 import toph from 'assets/cardsAssets/toph.gif';
 import earth from 'assets/cardsAssets/noise-earth.mp3';
+
+import faceZuko from 'assets/cardsAssets/faceZuko.jpg';
 import zuko from 'assets/cardsAssets/zuko.gif';
 import fire from 'assets/cardsAssets/noise-fire.mp3';
+
+import faceAzula from 'assets/cardsAssets/faceAzula.jpg';
 import azula from 'assets/cardsAssets/azula.gif';
 import lightning from 'assets/cardsAssets/noise-lightning.mp3';
 
@@ -25,7 +36,8 @@ const cards = [
             machineDef: ["Defesa", 1]
         },
         lifePoints: 1,
-        noise: wind
+        noise: wind,
+        face: faceAang
     },
 
     {
@@ -41,7 +53,8 @@ const cards = [
             machineDef: ["Defesa", 0.7]
         },
         lifePoints: 1,
-        noise: water
+        noise: water,
+        face: faceKatara
     },
 
     {
@@ -57,7 +70,8 @@ const cards = [
             machineDef: ["Defesa", 1]
         },
         lifePoints: 1,
-        noise: sword
+        noise: sword,
+        face: faceSokka
     },
 
     {
@@ -73,7 +87,8 @@ const cards = [
             machineDef: ["Defesa", 0.4]
         },
         lifePoints: 1,
-        noise: earth
+        noise: earth,
+        face: faceToph
     },
 
     {
@@ -89,7 +104,8 @@ const cards = [
             machineDef: ["Defesa", 0.6]
         },
         lifePoints: 1,
-        noise: fire
+        noise: fire,
+        face: faceZuko
     },
 
     {
@@ -105,7 +121,8 @@ const cards = [
             machineDef: ["Defesa", 0.4]
         },
         lifePoints: 1,
-        noise: lightning
+        noise: lightning,
+        face: faceAzula
     },
 ];
 
