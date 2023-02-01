@@ -5,20 +5,30 @@ import dead from 'assets/cardsAssets/dead.png'
 const CharFace = ({char, card}) => {
 
   function handleOpacity() {
-    if(card && (card.name === char.name || card.lifePoints < 0)) {
-      return {opacity: 0.5};
+    if(card && card.name === char.name) {
+      return {opacity: 0.3};
     } else {
       return null;
+    }
+  }
+  
+  function handleLifePoints() {
+    if(char.lifePoints < 0) {
+      return 0
+    } else if(Number.isInteger(char.lifePoints)) {
+      return char.lifePoints
+    } else {
+      return char.lifePoints.toFixed(1)
     }
   }
 
   return (
     <div className={styles.cardFace} style={handleOpacity()}>
-      {char.lifePoints < 0 &&
+      {char.lifePoints <= 0 &&
         <img className={styles.dead} src={dead} alt='dead'/>
       }
       <img className={styles.face} src={char.face} alt={char.name}/>
-      <p className={styles.life}>Vida: {char.lifePoints<0 ? 0 : char.lifePoints}/10</p>
+      <p className={styles.life}>Vida: {handleLifePoints()}/10</p>
     </div>
   )
 }

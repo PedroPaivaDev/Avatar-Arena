@@ -131,10 +131,10 @@ const Display = () => {
       setTimer(true);
     }, 1800)
 
-    if(playerDeck[player.card.name].lifePoints<0) {
+    if(playerDeck[player.card.name].lifePoints<=0) {
       setPlayerSelection(playerSelection.filter(card => card !== player.card.name));
     }
-    if(machineDeck[machine.card.name].lifePoints<0) {
+    if(machineDeck[machine.card.name].lifePoints<=0) {
       setMachineSelection(machineSelection.filter(card => card !== machine.card.name));
     }
 

@@ -5,6 +5,16 @@ import cardFrame from 'assets/cardFace.png';
 
 const Card = ({card, id, disabled, lifePoints, action, setAction, ability, setAbility, className}) => {
 
+  function handleLifePoints() {
+    if(lifePoints < 0) {
+      return 0
+    } else if(Number.isInteger(lifePoints)) {
+      return lifePoints
+    } else {
+      return lifePoints.toFixed(1)
+    }
+  }
+
   return (
     <div className={`${styles.cardFace} ${className}`} id={card.name}>
       <img className={styles.cardFrame} src={cardFrame} alt='cardFace' />
@@ -30,7 +40,7 @@ const Card = ({card, id, disabled, lifePoints, action, setAction, ability, setAb
         type='checkbox'
       />
       <label htmlFor={`${card.name}Ability`} className={styles.ability}>{card.ability}</label>
-      <p className={styles.life}>Vida: {lifePoints<0 ? 0 : lifePoints}/10</p>
+      <p className={styles.life}>Vida: {lifePoints && handleLifePoints()}/10</p>
     </div>
   )
 }

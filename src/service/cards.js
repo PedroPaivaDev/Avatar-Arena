@@ -35,7 +35,7 @@ const cards = [
             playerDef: ["Defesa", 0.4],
             machineDef: ["Defesa", 1]
         },
-        lifePoints: 1,
+        lifePoints: 10,
         noise: wind,
         face: faceAang
     },
@@ -52,7 +52,7 @@ const cards = [
             playerDef: ["Defesa", 1],
             machineDef: ["Defesa", 0.7]
         },
-        lifePoints: 1,
+        lifePoints: 10,
         noise: water,
         face: faceKatara
     },
@@ -69,7 +69,7 @@ const cards = [
             playerDef: ["Defesa", 0.5],
             machineDef: ["Defesa", 1]
         },
-        lifePoints: 1,
+        lifePoints: 10,
         noise: sword,
         face: faceSokka
     },
@@ -86,7 +86,7 @@ const cards = [
             playerDef: ["Defesa", 0.6],
             machineDef: ["Defesa", 0.4]
         },
-        lifePoints: 1,
+        lifePoints: 10,
         noise: earth,
         face: faceToph
     },
@@ -103,7 +103,7 @@ const cards = [
             playerDef: ["Defesa", 1],
             machineDef: ["Defesa", 0.6]
         },
-        lifePoints: 1,
+        lifePoints: 10,
         noise: fire,
         face: faceZuko
     },
@@ -120,7 +120,7 @@ const cards = [
             playerDef: ["Defesa", 0.4],
             machineDef: ["Defesa", 0.4]
         },
-        lifePoints: 1,
+        lifePoints: 10,
         noise: lightning,
         face: faceAzula
     },
