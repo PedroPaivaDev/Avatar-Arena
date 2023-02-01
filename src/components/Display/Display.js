@@ -42,7 +42,6 @@ const Display = () => {
       return
     }
 
-    showCards()
     setSlide('Sortear Carta')
   }
 
@@ -173,7 +172,7 @@ const Display = () => {
   return (
     <>
       {slide!=='Iniciar' && 
-        <TeamFace selection={playerSelection} team={playerDeck} card={player.card}/>
+        <TeamFace team='Jogador' deck={playerDeck} card={player.card}/>
       }
       <div className={styles.cards}>
         {player.card && machine.card && <>
@@ -190,7 +189,7 @@ const Display = () => {
         </>}
       </div>
       {slide!=='Iniciar' && 
-        <TeamFace selection={machineSelection} team={machineDeck} card={machine.card}/>
+        <TeamFace team='Oponente' deck={machineDeck} card={machine.card}/>
       }
       <div className={styles.display}>
         {slide==='Iniciar' && 

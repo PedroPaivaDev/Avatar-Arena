@@ -1,6 +1,20 @@
 .teamFace {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-top: 20px;
+    border: 2px solid #424242;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.title {
+  text-align: center;
+  font-family: 'herculanum';
+  font-size: 0.8rem;
+  color: #424242;
+  text-shadow: 1px 1px 5px white;
+  font-weight: bold;
 }
