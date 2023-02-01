@@ -2,6 +2,7 @@
     /* --cardFaceWidth: 100px;
     --cardFaceHeight: 100px; */
 
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,4 +31,11 @@
     color: #dedede;
     font-size: 0.725rem;
     z-index: 1;
+}
+
+.dead {
+    position: absolute;
+    top: 10px;    
+    width: 60px;
+    height: 60px;
 }

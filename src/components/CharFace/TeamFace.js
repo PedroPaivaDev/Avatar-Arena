@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './TeamFace.module.css';
 import CharFace from './CharFace';
 
-const TeamFace = ({selection, team, card}) => {
+const TeamFace = ({team, card}) => {
 
   const select = Object.keys(team)
 
@@ -12,9 +12,9 @@ const TeamFace = ({selection, team, card}) => {
 
   return (
     <div className={styles.teamFace}>
-      <CharFace char={card1}/>
-      <CharFace char={card2}/>
-      <CharFace char={card3}/>
+      <CharFace char={card1} card={card}/>
+      <CharFace char={card2} card={card}/>
+      <CharFace char={card3} card={card}/>
     </div>
   )
 }
