@@ -9,7 +9,7 @@ const Result = ({result, machineAbility}) => {
       <p>
         {result}
         <br/><br/>
-        {machineAbility && 'O oponente usou o efeito especial.'}
+        {/* {machineAbility && 'O oponente usou o efeito especial.'} */}
       </p>
     </div>
   )

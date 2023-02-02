@@ -20,10 +20,7 @@
 
 .face {
     width: 70px;
-    height: 70px;
-    /* position: relative; */
-    /* top: 25px; */
-    animation: opacity var(--opacityTime) forwards;
+    height: 65px;
 }
 
 .life {
@@ -35,7 +32,8 @@
 
 .dead {
     position: absolute;
-    top: 10px;    
+    top: 5px;    
     width: 60px;
     height: 60px;
+    z-index: 1;
 }

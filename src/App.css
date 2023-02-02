@@ -128,3 +128,7 @@ img {
         left: -50px;
     }
 }
+
+.Oponente {
+  transform: scaleX(-1);
+}

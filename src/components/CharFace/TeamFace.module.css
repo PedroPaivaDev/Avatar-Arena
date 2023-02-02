@@ -3,8 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 3px;
     border: 2px solid #424242;
     border-radius: 5px;
     padding: 5px;
@@ -17,4 +16,20 @@
   color: #424242;
   text-shadow: 1px 1px 5px white;
   font-weight: bold;
+}
+
+@media (max-width: 40rem) {
+  .teamFace {
+    display: flex;
+    flex-direction: row;
+  }
+  .title {
+    display: none;
+  }
+}
+
+@media (max-width: 42rem) and (max-height: 42rem) {
+  .teamFace {
+    display: none;
+  }
 }

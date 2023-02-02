@@ -1,18 +1,13 @@
 .result {
-    /* --scrollOpenWidth: 300px;
+    --scrollOpenWidth: 310px;
     --scrollOpenHeight: 200px;
-
-    width: var(--scrollOpenWidth);
-    height: var(--scrollOpenHeight);
-    background: url('/src/assets/scrollOpen.png');
-    background-size: var(--scrollOpenWidth) var(--scrollOpenHeight); */
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: flex-start;
-    width: 310px;
-    height: 200px;
+    width: var(--scrollOpenWidth);
+    height: var(--scrollOpenHeight);
     margin-bottom: 20px;
     animation: scale 2s;
 }
@@ -23,8 +18,8 @@
         width: 0;
     }
     100% {
-        width: 310px;
-        height: 200px;
+        width: var(--scrollOpenWidth);
+        height: var(--scrollOpenHeight);
     }
 }
 
@@ -46,8 +41,8 @@
 }
 
 .result img {
-    width: 310px;
-    height: 200px;
+    width: var(--scrollOpenWidth);
+    height: var(--scrollOpenHeight);
     align-self: flex-start;
     z-index: -100;
     position: relative;
@@ -58,5 +53,5 @@
 @keyframes openScroll {
     0% {width: 0;}
     90% {width: 0; height: 190px;}
-    100% {width: 310px; height: 200px;}
+    100% {width: var(--scrollOpenWidth); height: var(--scrollOpenHeight);}
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CharFace.module.css';
 import dead from 'assets/cardsAssets/dead.png'
 
-const CharFace = ({char, card}) => {
+const CharFace = ({team, char, card}) => {
 
   function handleOpacity() {
     if(card && card.name === char.name) {
@@ -27,8 +27,8 @@ const CharFace = ({char, card}) => {
       {char.lifePoints <= 0 &&
         <img className={styles.dead} src={dead} alt='dead'/>
       }
-      <img className={styles.face} src={char.face} alt={char.name}/>
-      <p className={styles.life}>Vida: {handleLifePoints()}/10</p>
+      <img className={`${styles.face} ${team}`} src={char.face} alt={char.name}/>
+      <p className={styles.life}>{char.name}:{handleLifePoints()}/10</p>
     </div>
   )
 }

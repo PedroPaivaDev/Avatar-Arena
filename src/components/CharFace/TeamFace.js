@@ -13,9 +13,9 @@ const TeamFace = ({team, deck, card}) => {
   return (
     <div className={styles.teamFace}>
       <p className={styles.title}>{team}</p>
-      <CharFace char={card1} card={card}/>
-      <CharFace char={card2} card={card}/>
-      <CharFace char={card3} card={card}/>
+      <CharFace team={team} char={card1} card={card}/>
+      <CharFace team={team} char={card2} card={card}/>
+      <CharFace team={team} char={card3} card={card}/>
     </div>
   )
 }
