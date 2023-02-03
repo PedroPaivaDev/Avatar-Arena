@@ -11,8 +11,8 @@
 }
 
 *, *:after, *:before {
-	margin: 0;
-  padding: 0;
+	margin: 0px 0px;
+  padding: 0px 0px;
   border: none;
   outline: none;
   font-weight: 300;
@@ -32,6 +32,10 @@ body {
 a {
 	text-decoration: none;
 	color: black;
+}
+
+input {
+    appearance: none;
 }
 
 ul {
@@ -81,7 +85,7 @@ img {
 }
 
 @keyframes strech {
-  0% {width: 0;}
+  0% {width: 0px;}
   100% {width: 130px;}
 }
 
@@ -115,8 +119,9 @@ img {
 
 @keyframes rotateSlide {
     0% {
-        transform: rotateZ(0deg);
-        left: 0px;
+        transform: rotateZ(-45deg);
+        left: 70px;
+        top: -65px;
     }
     90% {
         opacity: 1;
@@ -125,7 +130,7 @@ img {
     100% {
         opacity: 0;
         transform: rotateZ(-90deg);
-        left: -50px;
+        left: -30px;
     }
 }
 

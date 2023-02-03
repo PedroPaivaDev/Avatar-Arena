@@ -27,9 +27,3 @@
     display: none;
   }
 }
-
-@media (max-width: 42rem) and (max-height: 42rem) {
-  .teamFace {
-    display: none;
-  }
-}

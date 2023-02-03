@@ -92,10 +92,6 @@ input:checked + .ability
     border-radius: 5px;
 }
 
-input {
-    appearance: none;
-}
-
 @keyframes opacity {
     0% {opacity: 0;}
     90% {opacity: 0;}

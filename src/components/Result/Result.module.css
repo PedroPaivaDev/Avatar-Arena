@@ -1,5 +1,5 @@
 .result {
-    --scrollOpenWidth: 310px;
+    --scrollOpenWidth: 260px;
     --scrollOpenHeight: 200px;
 
     display: flex;
@@ -24,13 +24,12 @@
 }
 
 .result p {
-    width: 250px;
+    width: calc(var(--scrollOpenWidth)*0.75);
     text-align: justify;
     font-size: 0.8rem;
     position: absolute;
-    padding-left: 30px;
+    padding-left: 20px;
     align-self: center;
-    /* opacity: 0; */
     animation: fadeIn 2s;
 }
 

@@ -15,8 +15,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 320px;
-    min-height: 200px;
+    min-width: 260px;
+    min-height: 240px;
 }
 
 .guide {
@@ -25,17 +25,9 @@
     text-shadow: 2px 2px 3px black;
     text-align: center;
     padding: 10px 20px;
-    width: 320px;
+    width: 260px;
     height: 50px;
-}
-
-@media (max-width: 58rem) {
-    .resulAndButton {
-        width: 250px;
-    }
-    .guide {
-        width: 250px;
-    }
+    margin-top: -30px;
 }
 
 .strechDown img:nth-child(1) {

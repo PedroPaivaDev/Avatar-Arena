@@ -10,13 +10,13 @@ import useCard from 'hooks/useCard';
 import TeamFace from 'components/CharFace/TeamFace';
 
 const Display = () => {
+
+  const { innerWidth: width, innerHeight: height } = window;
   const [slide, setSlide] = React.useState('Iniciar');
   const [result, setResult] = React.useState(null);
   const [guide, setGuide] = React.useState(null);
   const [timer, setTimer] = React.useState(false);
- 
-  //mostrar em tela as outras duas cartas, para ver a vida de cada uma.
-  //mudar a remoção da carta do deck para o selection
+  
   const [playerSelection, setPlayerSelection] = React.useState([]);
   const [machineSelection, setMachineSelection] = React.useState([]);
 
@@ -35,14 +35,15 @@ const Display = () => {
   function start() {
 
     if(playerSelection.length===0 || playerSelection.length<3) {
-      setGuide('Escolha três personagens para o seu baralho')
+      setGuide('Escolha três personagens para o seu time')
       return
     } else if (playerSelection.length>3) {
-      setGuide('Você deve escolher apenas três personagens para o seu baralho')
+      setGuide('Você deve escolher apenas três personagens para o seu time')
       return
     }
 
-    setSlide('Sortear Carta')
+    setGuide('Clique no selo para sortear um personagem do seu time')
+    setSlide('Sortear')
   }
 
   function showCards() {
@@ -158,22 +159,31 @@ const Display = () => {
     machine.setAbility(null);
     setTimer(false);
 
-    (playerSelection.length===0 || machineSelection.length===0) ? setSlide('Iniciar') : setSlide('Sortear Carta');
+    (playerSelection.length===0 || machineSelection.length===0) ? setSlide('Iniciar') : setSlide('Sortear');
   }
 
   function handleClick() {
     document.querySelector('.labelBtn').classList.add('strech')
     if(slide==='Iniciar') return start()
-    if(slide==='Sortear Carta') return showCards()
+    if(slide==='Sortear') return showCards()
     if(slide==='Movimentar') return validate()
     if(slide==='Nova Partida') return resetGame()
   }
 
+  function handleTeamView(team) {
+    if(slide!=='Iniciar' && (width>690 || height>690)) {
+      return team
+    } else if(slide==='Sortear') {
+      return team
+    } else {
+      return null
+    }
+  }
+  console.log(width, height)
+
   return (
     <>
-      {slide!=='Iniciar' && 
-        <TeamFace team='Jogador' deck={playerDeck} card={player.card}/>
-      }
+      {handleTeamView(<TeamFace team='Jogador' deck={playerDeck} card={player.card}/>)}
       <div className={styles.cards}>
         {player.card && machine.card && <>
           <Card id='Jogador' disabled={slide==='Nova Partida'?true:false}
@@ -188,9 +198,7 @@ const Display = () => {
           />
         </>}
       </div>
-      {slide!=='Iniciar' && 
-        <TeamFace team='Oponente' deck={machineDeck} card={machine.card}/>
-      }
+      {handleTeamView(<TeamFace team='Oponente' deck={machineDeck} card={machine.card}/>)}
       <div className={styles.display}>
         {slide==='Iniciar' && 
           <CardSelector
