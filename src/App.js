@@ -1,13 +1,24 @@
-import { AppRoutes } from 'pages/routes';
 import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Header from 'components/Header/Header';
+import About from 'pages/About';
+import Home from 'pages/Home';
+import Game from 'pages/Game';
 
 function App() {
   return (
     <div className='app'>
-      <h1 className='title'>Avatar-Arena</h1>
-      <div className='container'>
-        <AppRoutes/>
-      </div>
+      <BrowserRouter>
+        <Header/>
+        <main className='container'>
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='game' element={<Game/>}/>
+              <Route path='about' element={<About/>}/>
+            </Routes>
+        </main>
+        <p className='footer'>Copyrights © Nickelodeon</p>
+      </BrowserRouter>
     </div>
   );
 }
