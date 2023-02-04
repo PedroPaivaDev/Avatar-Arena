@@ -8,23 +8,24 @@ import Card from '../Card/Card';
 import CardSelector from 'components/CardSelector/CardSelector';
 import useCard from 'hooks/useCard';
 import TeamFace from 'components/CharFace/TeamFace';
+import useLocalStorage from 'hooks/useLocalStorage';
 
 const Display = () => {
 
   const { innerWidth: width, innerHeight: height } = window;
-  const [slide, setSlide] = React.useState('Iniciar');
+  const [slide, setSlide] = useLocalStorage('slide', 'Iniciar');
   const [result, setResult] = React.useState(null);
   const [guide, setGuide] = React.useState(null);
   const [timer, setTimer] = React.useState(false);
-  
-  const [playerSelection, setPlayerSelection] = React.useState([]);
-  const [machineSelection, setMachineSelection] = React.useState([]);
 
-  const [playerDeck, setPlayerDeck] = React.useState({});
-  const [machineDeck, setMachineDeck] = React.useState({});
+  const [playerSelection, setPlayerSelection] = useLocalStorage('pSelection', []);
+  const [machineSelection, setMachineSelection] = useLocalStorage('mSelection', []);
 
-  const player = useCard();
-  const machine = useCard();
+  const [playerDeck, setPlayerDeck] = useLocalStorage('playerDeck', {});
+  const [machineDeck, setMachineDeck] = useLocalStorage('machineDeck', {});
+
+  const player = useCard('player');
+  const machine = useCard('machine');
 
   function pickUpCard(selection, deck) {
     const randomNumber = parseInt(Math.random()*(selection.length));
@@ -105,14 +106,31 @@ const Display = () => {
 
     if (player.card.attributes[player.action]>
       machine.card.attributes[machineAction]) {
+
       setResult(`Você venceu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
-      machineDeck[machine.card.name].lifePoints -= player.card.attributes[player.action];
+
+      const newMachineCardLife = machineDeck[machine.card.name].lifePoints - player.card.attributes[player.action];
+      setMachineDeck({...machineDeck, 
+        [machine.card.name]: {...machineDeck[machine.card.name], 
+          lifePoints: newMachineCardLife
+        }
+      });
+
     } else if (player.card.attributes[player.action]<
       machine.card.attributes[machineAction]) {
+
       setResult(`Você perdeu! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
-      playerDeck[player.card.name].lifePoints -= machine.card.attributes[machineAction];
+
+      const newPlayerCardLife = playerDeck[player.card.name].lifePoints - machine.card.attributes[machineAction];
+      setPlayerDeck({...playerDeck, 
+        [player.card.name]: {...playerDeck[player.card.name], 
+          lifePoints: newPlayerCardLife
+        }
+      });
+
     } else if (player.card.attributes[player.action]===
       machine.card.attributes[machineAction]) {
+
       setResult(`Empatou! O oponente estava em modo de ${machineAction} (${machine.card.attributes[machineAction]} pontos) e você estava em modo de ${player.action} (${player.card.attributes[player.action]} pontos).`);
     }
     
@@ -131,13 +149,6 @@ const Display = () => {
       setTimer(true);
     }, 1800)
 
-    if(playerDeck[player.card.name].lifePoints<=0) {
-      setPlayerSelection(playerSelection.filter(card => card !== player.card.name));
-    }
-    if(machineDeck[machine.card.name].lifePoints<=0) {
-      setMachineSelection(machineSelection.filter(card => card !== machine.card.name));
-    }
-
     setSlide('Nova Partida');
   }, [machine, player])
 
@@ -145,6 +156,17 @@ const Display = () => {
     machine.action!==null && machine.ability!==null && 
     showResult(machine.action, machine.ability);
   },[machine.action, machine.ability])
+
+  React.useEffect(() => {
+    if(player.card && machine.card) {
+      if(playerDeck[player.card.name].lifePoints<=0) {
+        setPlayerSelection(playerSelection.filter(card => card !== player.card.name));
+      }
+      if(machineDeck[machine.card.name].lifePoints<=0) {
+        setMachineSelection(machineSelection.filter(card => card !== machine.card.name));
+      }
+    }
+  },[result])
 
   function resetGame() {
 
@@ -179,7 +201,6 @@ const Display = () => {
       return null
     }
   }
-  console.log(width, height)
 
   return (
     <>

@@ -1,22 +1,11 @@
 import React from 'react';
+import useLocalStorage from './useLocalStorage';
 
-const useCard = () => {
+const useCard = (user) => {
 
-  const [card, setCard] = React.useState(null);
+  const [card, setCard] = useLocalStorage(`card${user}`, null);
   const [action, setAction] = React.useState(null);
   const [ability, setAbility] = React.useState(null);
-
-  // function onChangeAction({target}) {
-  //   setAction(target.value);
-  // }
-
-  // function onChangeAbility() {
-  //   if(target.checked) {
-  //     setAbility(Boolean(target.value))
-  //   } else {
-  //     setAbility(false)
-  //   }
-  // }
 
   return {card, setCard, action, setAction, ability, setAbility}
 }
