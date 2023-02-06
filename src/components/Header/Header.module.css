@@ -34,8 +34,14 @@ nav {
   transition: 0.3s;
 }
 
-.title:hover, .game:hover, .about:hover, .title:focus, .game:focus, .about:focus {
+.title:hover, .game:hover, .about:hover {
   /* background: linear-gradient(90deg, transparent 40%, white 100%); */
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 0 10px 10px rgba(255,255,255,0.6);
+  border-radius: 20px;
+}
+
+.activePage {
   background: rgba(255,255,255,0.6);
   box-shadow: 0 0 10px 10px rgba(255,255,255,0.6);
   border-radius: 20px;

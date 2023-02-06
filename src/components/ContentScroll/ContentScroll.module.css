@@ -1,0 +1,37 @@
+.container {
+    --containerWidth: 340px;
+    --containerHeight: 250px;
+
+    position: relative;
+    width: var(--containerWidth);
+    height: var(--containerHeight);
+}
+
+.scroll {
+    position: absolute;
+    z-index: -1;
+    width: var(--containerWidth);
+    height: var(--containerHeight);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 50px 40px 60px 70px;
+}
+
+.container p, .container h6 {
+    text-align: justify;
+    font-family: 'herculanum';
+    font-size: 0.8rem;
+    color: #424242;
+    text-shadow: 1px 1px 5px white;
+    font-weight: bold;
+}
+
+.container h6 {
+    font-size: 1rem;
+}

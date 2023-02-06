@@ -17,7 +17,7 @@ function App() {
               <Route path='about' element={<About/>}/>
             </Routes>
         </main>
-        <p className='footer'>Copyrights © Nickelodeon</p>
+        <p className='footer'>Jogo criado por PedroPaivaDev - Direitos de imagem da Nickelodeon</p>
       </BrowserRouter>
     </div>
   );

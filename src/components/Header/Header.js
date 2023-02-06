@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
 
@@ -16,9 +16,9 @@ const Header = () => {
 
   function handleGameButton() {
     if(pathname==='/game') {
-      return <button className={styles.game} onClick={resetGame}>Recomeçar</button>
+      return <button className={styles.game} onClick={resetGame}>Reset</button>
     } else {
-      return <Link className={styles.game} to='game'>Jogar</Link>
+      return <NavLink className={styles.game} activeClassName={styles.activePage} to='game'>{localStorage.getItem('playerDeck')?'Retomar':'Jogar'}</NavLink>
     }
   }
 
@@ -26,8 +26,12 @@ const Header = () => {
     <header>
       <nav>
         {handleGameButton()}
-        <Link className={styles.title} to='/' aria-label='Home'>Avatar-Arena</Link>
-        <Link className={styles.about} to='about'>Sobre</Link>
+        <NavLink className={styles.title} activeClassName={styles.activePage} to='/' end aria-label='Home'>
+          Avatar-Arena
+        </NavLink>
+        <NavLink className={styles.about} activeClassName={styles.activePage} to='about'>
+          Sobre
+        </NavLink>
       </nav>      
     </header>
   )
