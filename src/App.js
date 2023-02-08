@@ -6,6 +6,21 @@ import Home from 'pages/Home';
 import Game from 'pages/Game';
 
 function App() {
+
+  // const baseURL = 'https://cards-avatar-default-rtdb.firebaseio.com/'
+  
+  // async function getCards() {
+  //   const response = await fetch(baseURL, {method: "GET", mode: "no-cors"});
+  //   return await response.json();
+  // }
+
+  // async function showTest() {
+  //   const data = await getCards()
+  //   return console.log(data)
+  // }
+
+  // showTest()
+
   return (
     <div className='app'>
       <BrowserRouter>
@@ -17,7 +32,7 @@ function App() {
               <Route path='about' element={<About/>}/>
             </Routes>
         </main>
-        <p className='footer'>Jogo criado por PedroPaivaDev - Direitos de imagem da Nickelodeon</p>
+        <p className='footer'>Desenvolvido por Pedro Paiva - Direitos de imagem da Nickelodeon</p>
       </BrowserRouter>
     </div>
   );

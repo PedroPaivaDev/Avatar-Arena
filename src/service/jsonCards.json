@@ -1,0 +1,103 @@
+[
+    {
+        "name": "Aang",
+        "image": "assets/cardsAssets/aang.gif",
+        "attributes": { "Ataque": 3, "Defesa": 6 },
+        "ability":
+            "Vento: Reduz a sua defesa em 60% e reduz o ataque do oponente em 50%",
+        "modifiers": {
+            "playerAtq": ["Ataque", 1],
+            "machineAtq": ["Ataque", 0.5],
+            "playerDef": ["Defesa", 0.4],
+            "machineDef": ["Defesa", 1]
+        },
+        "lifePoints": 10,
+        "noise": "assets/cardsAssets/noise-wind.mp3",
+        "face": "assets/cardsAssets/faceAang.png"
+    },
+
+    {
+        "name": "Katara",
+        "image": "assets/cardsAssets/katara.gif",
+        "attributes": { "Ataque": 6, "Defesa": 4 },
+        "ability":
+            "Água: Reduz o ataque e defesa do oponente em 30% e reduz o seu ataque em 40%",
+        "modifiers": {
+            "playerAtq": ["Ataque", 0.6],
+            "machineAtq": ["Ataque", 0.7],
+            "playerDef": ["Defesa", 1],
+            "machineDef": ["Defesa", 0.7]
+        },
+        "lifePoints": 10,
+        "noise": "assets/cardsAssets/noise-water.mp3",
+        "face": "assets/cardsAssets/faceKatara.jpg"
+    },
+
+    {
+        "name": "Sokka",
+        "image": "assets/cardsAssets/sokka.gif",
+        "attributes": { "Ataque": 4, "Defesa": 5 },
+        "ability":
+            "Berserker: Reduz a sua defesa em 50% e aumenta o seu ataque em 50%",
+        "modifiers": {
+            "playerAtq": ["Ataque", 1.5],
+            "machineAtq": ["Ataque", 1],
+            "playerDef": ["Defesa", 0.5],
+            "machineDef": ["Defesa", 1]
+        },
+        "lifePoints": 10,
+        "noise": "assets/cardsAssets/noise-sword.mp3",
+        "face": "assets/cardsAssets/faceSokka.png"
+    },
+
+    {
+        "name": "Toph",
+        "image": "assets/cardsAssets/toph.gif",
+        "attributes": { "Ataque": 5, "Defesa": 5 },
+        "ability":
+            "Terra: Reduz o seu ataque e defesa em 40% e Reduz em 60% o ataque e defesa do oponente",
+        "modifiers": {
+            "playerAtq": ["Ataque", 0.6],
+            "machineAtq": ["Ataque", 0.4],
+            "playerDef": ["Defesa", 0.6],
+            "machineDef": ["Defesa", 0.4]
+        },
+        "lifePoints": 10,
+        "noise": "assets/cardsAssets/noise-earth.mp3",
+        "face": "assets/cardsAssets/faceToph.jpg"
+    },
+
+    {
+        "name": "Zuko",
+        "image": "assets/cardsAssets/zuko.gif",
+        "attributes": { "Ataque": 6, "Defesa": 3 },
+        "ability":
+            "Fogo: Reduz em 40% a defesa do oponente e reduz o seu ataque em 20%",
+        "modifiers": {
+            "playerAtq": ["Ataque", 0.8],
+            "machineAtq": ["Ataque", 1],
+            "playerDef": ["Defesa", 1],
+            "machineDef": ["Defesa", 0.6]
+        },
+        "lifePoints": 10,
+        "noise": "assets/cardsAssets/noise-fire.mp3",
+        "face": "assets/cardsAssets/faceZuko.jpg"
+    },
+
+    {
+        "name": "Azula",
+        "image": "assets/cardsAssets/azula.gif",
+        "attributes": { "Ataque": 5, "Defesa": 5 },
+        "ability":
+            "Relâmpago: Reduz seu ataque em 40%, reduz sua defesa em 60% e reduz a defesa do oponente em 60%",
+        "modifiers": {
+            "playerAtq": ["Ataque", 0.6],
+            "machineAtq": ["Ataque", 1],
+            "playerDef": ["Defesa", 0.4],
+            "machineDef": ["Defesa", 0.4]
+        },
+        "lifePoints": 10,
+        "noise": "assets/cardsAssets/noise-lightning.mp3",
+        "face": "assets/cardsAssets/faceAzula.jpg"
+    }
+]
