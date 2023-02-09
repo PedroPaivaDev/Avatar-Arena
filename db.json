@@ -2,7 +2,7 @@
     "cards": [
         {
             "name": "Aang",
-            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/aang.gif",
+            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/aang.gif",
             "attributes": { "Ataque": 3, "Defesa": 6 },
             "ability":
                 "Vento: Reduz a sua defesa em 60% e reduz o ataque do oponente em 50%",
@@ -13,13 +13,13 @@
                 "machineDef": ["Defesa", 1]
             },
             "lifePoints": 10,
-            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/noise-wind.mp3",
-            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/faceAang.png"
+            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/noise-wind.mp3",
+            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/faceAang.png"
         },
 
         {
             "name": "Katara",
-            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/katara.gif",
+            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/katara.gif",
             "attributes": { "Ataque": 6, "Defesa": 4 },
             "ability":
                 "Água: Reduz o ataque e defesa do oponente em 30% e reduz o seu ataque em 40%",
@@ -30,13 +30,13 @@
                 "machineDef": ["Defesa", 0.7]
             },
             "lifePoints": 10,
-            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/noise-water.mp3",
-            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/faceKatara.jpg"
+            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/noise-water.mp3",
+            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/faceKatara.jpg"
         },
 
         {
             "name": "Sokka",
-            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/sokka.gif",
+            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/sokka.gif",
             "attributes": { "Ataque": 4, "Defesa": 5 },
             "ability":
                 "Berserker: Reduz a sua defesa em 50% e aumenta o seu ataque em 50%",
@@ -47,13 +47,13 @@
                 "machineDef": ["Defesa", 1]
             },
             "lifePoints": 10,
-            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/noise-sword.mp3",
-            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/faceSokka.png"
+            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/noise-sword.mp3",
+            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/faceSokka.png"
         },
 
         {
             "name": "Toph",
-            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/toph.gif",
+            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/toph.gif",
             "attributes": { "Ataque": 5, "Defesa": 5 },
             "ability":
                 "Terra: Reduz o seu ataque e defesa em 40% e Reduz em 60% o ataque e defesa do oponente",
@@ -64,13 +64,13 @@
                 "machineDef": ["Defesa", 0.4]
             },
             "lifePoints": 10,
-            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/noise-earth.mp3",
-            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/faceToph.jpg"
+            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/noise-earth.mp3",
+            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/faceToph.jpg"
         },
 
         {
             "name": "Zuko",
-            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/zuko.gif",
+            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/zuko.gif",
             "attributes": { "Ataque": 6, "Defesa": 3 },
             "ability":
                 "Fogo: Reduz em 40% a defesa do oponente e reduz o seu ataque em 20%",
@@ -81,13 +81,13 @@
                 "machineDef": ["Defesa", 0.6]
             },
             "lifePoints": 10,
-            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/noise-fire.mp3",
-            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/faceZuko.jpg"
+            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/noise-fire.mp3",
+            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/faceZuko.jpg"
         },
 
         {
             "name": "Azula",
-            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/azula.gif",
+            "image": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/azula.gif",
             "attributes": { "Ataque": 5, "Defesa": 5 },
             "ability":
                 "Relâmpago: Reduz seu ataque em 40%, reduz sua defesa em 60% e reduz a defesa do oponente em 60%",
@@ -98,8 +98,8 @@
                 "machineDef": ["Defesa", 0.4]
             },
             "lifePoints": 10,
-            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/noise-lightning.mp3",
-            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/blob/main/src/assets/cardsAssets/faceAzula.jpg"
+            "noise": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/noise-lightning.mp3",
+            "face": "https://github.com/PedroPaivaDev/Avatar-Arena/main/src/assets/cardsAssets/faceAzula.jpg"
         }
     ]
 }
