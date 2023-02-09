@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Display.module.css';
-import cards from '../../service/cards';
 
 import Button from '../Button/Button';
 import Result from '../Result/Result';
@@ -9,8 +8,19 @@ import CardSelector from 'components/CardSelector/CardSelector';
 import useCard from 'hooks/useCard';
 import TeamFace from 'components/CharFace/TeamFace';
 import useLocalStorage from 'hooks/useLocalStorage';
+import getCards from 'service/api';
 
 const Display = () => {
+
+  const [cards, setCards] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCards();
+      setCards(data);
+    }
+    fetchData()
+  },[])
 
   const { innerWidth: width, innerHeight: height } = window;
   const [slide, setSlide] = useLocalStorage('slide', 'Iniciar');

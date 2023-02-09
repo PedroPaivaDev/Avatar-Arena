@@ -53,7 +53,8 @@ Esse foi o primeiro projeto pessoal que eu considero ter feito sozinho. Ele foi 
 | [versão_0.3](https://avatar-arena-git-v03-pedropaivadev.vercel.app/) | Versão final utilizando *JavaScript Vanilla*. Reduzido o tamanho das cartas, para tornar o jogo responsivo para mobile. Adicionada mais animações e efeitos sonoros para cada carta. |
 | [versão_1.1](https://avatar-arena-git-v11-pedropaivadev.vercel.app/) | Refatoração utilizando a biblioteca React e melhorada a estilização e resposividade. |
 | [versão_1.2](https://avatar-arena-git-v12-pedropaivadev.vercel.app/) | Adicionada a personagem Azula e a tela inicial de seleção das cartas, para compor o baralho do jogador e da máquina. Também foi adicionado um Custom Hook para criar os estados de cada carta. |
-| [versão_2.0](https://avatar-arena-git-v20-pedropaivadev.vercel.app/) | Implementada a mecânica dos pontos de vida e a visualização do time escolhido. Nessa versão os dados da partida ficam salvos no localStorage e também foi criada a barra de navegação com a biblioteca react-router-dom, para mostrar as telas de "jogo", "inicial" e "sobre"|
+| [versão_2.0](https://avatar-arena-git-v20-pedropaivadev.vercel.app/) | Implementada a mecânica dos pontos de vida e a visualização do time escolhido. Nessa versão os dados da partida ficam salvos no localStorage e também foi criada a barra de navegação com a biblioteca react-router-dom, para mostrar as telas de "jogo", "inicial" e "sobre". |
+| [versão_2.1](https://avatar-arena-git-v21-pedropaivadev.vercel.app/) | Fetch das cartas no banco de dados. |
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 

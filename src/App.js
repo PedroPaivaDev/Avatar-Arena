@@ -6,21 +6,6 @@ import Home from 'pages/Home';
 import Game from 'pages/Game';
 
 function App() {
-
-  // const baseURL = 'https://cards-avatar-default-rtdb.firebaseio.com/cards/1'
-  
-  // async function getCards() {
-  //   const response = await fetch(baseURL, {method: "GET", mode: "no-cors"});
-  //   return await response.json();
-  // }
-
-  // async function showTest() {
-  //   const data = await getCards()
-  //   return console.log(data)
-  // }
-
-  // showTest()
-
   return (
     <div className='app'>
       <BrowserRouter>
