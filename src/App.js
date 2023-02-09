@@ -7,7 +7,7 @@ import Game from 'pages/Game';
 
 function App() {
 
-  // const baseURL = 'https://cards-avatar-default-rtdb.firebaseio.com/'
+  // const baseURL = 'https://cards-avatar-default-rtdb.firebaseio.com/cards/1'
   
   // async function getCards() {
   //   const response = await fetch(baseURL, {method: "GET", mode: "no-cors"});
